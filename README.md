@@ -27,3 +27,7 @@ CVE Number | Feature | Keywords | Device
 ---------- | ------- | -------- | ------
 [CVE-2016-3935](./EXP-CVE-2016-3935/readme.md) | msm crypto driver | Integer Overflow | nexus 6p 
 [CVE-2016-6738](./EXP-CVE-2016-6738/readme.md) | msm crypto driver | Arbitrary Address Write | nexus 6p 
+[CVE-2016-2411](./EXP-CVE-2016-2411/readme.md) | Qualcomm Power Management driver |  | nexus 5x 
+[CVE-2016-2434](./EXP-CVE-2016-2434/readme.md) | NVIDIA video driver |  | nexus 9
+[CVE-2016-2435](./EXP-CVE-2016-2435/readme.md) | NVIDIA video driver |  | nexus 9 
+[CVE-2016-3857](./EXP-CVE-2016-3857/readme.md) | linux kernel |  | nexus 7 
