@@ -52,6 +52,30 @@ CVE Number | Feature | Keywords | Bulletin
 
 ## Qualcomm
 
+CVE Number | Feature | Keywords | Bulletin 
+---------- | ------- | -------- | ------
+[CVE-2016-5863](https://source.codeaurora.org/quic/la/kernel/msm-3.18/commit/?id=daf0acd54a6a80de227baef9a06285e4aa5f8c93) | hidev driver | Array Overflow | [Qualcomm bulletin 2017-10](https://www.codeaurora.org/security-bulletin#0.2__CVE-2016-5863) 
+[CVE-2017-6421](https://www.codeaurora.org/gitweb/quic/la/?p=kernel/msm-4.4.git;a=commit;h=be42c7ff1f0396484882451fd18f47144c8f1b6b) |  touch controller driver | Buffer Overflow | [Qualcomm bulletin 2017-10](https://www.codeaurora.org/security-bulletin#0.2__CVE-2017-6421) 
+[CVE-2017-8257](https://source.codeaurora.org/quic/la/kernel/msm-4.4/commit/?id=0f19fbd00c6679bbc524f7a6d0fc3d54cfd1c9ae) |  sde_rotator  driver | UAF | [Qualcomm bulletin 2017-10](https://www.codeaurora.org/security-bulletin#0.2__CVE-2017-8257) 
+[CVE-2017-11030](https://source.codeaurora.org/quic/la/kernel/msm-4.4/commit/?id=2be7caec635de9fcf0d2145f858635e9366f0f4f) | mdss hdmi driver | Use of Out-of-range Pointer Offset in Display | [Qualcomm bulletin 2017-12](https://www.codeaurora.org/security-bulletin#_CVE-2017-11030) 
+[CVE-2017-11033](https://source.codeaurora.org/quic/la/kernel/msm-3.18/commit/?id=b54141365805ae1a5254bff5442e1a103d3701d0) | coresight-tmc driver | UAF | [Qualcomm bulletin 2017-12](https://www.codeaurora.org/security-bulletin#_CVE-2017-11033) 
+[CVE-2017-9722](https://source.codeaurora.org/quic/la/kernel/msm-4.4/commit/?id=ab0ae43628cff92d10792b762667ddfaf243d796) | mdss hdmi | Buffer Overflow | [Qualcomm bulletin 2017-12](https://www.codeaurora.org/security-bulletin#_CVE-2017-9722) 
+
+
+## Huawei
+
+CVE Number | Feature | Keywords | Bulletin 
+---------- | ------- | -------- | ------
+[CVE-2015-8223](http://www.huawei.com/en/psirt/security-advisories/hw-460489) |  | Dos | huawei advisories 2015-11
+[CVE-2015-8679](http://www.huawei.com/cn/psirt/security-advisories/huawei-sa-20160105-01-smartphone-cn) |  | Dos | huawei advisories 2016-02
+[CVE-2015-8678](http://www.huawei.com/cn/psirt/security-advisories/huawei-sa-20160105-01-smartphone-cn) |  | Dos | huawei advisories 2016-02
+[CVE-2016-8768](http://www.huawei.com/cn/psirt/security-advisories/huawei-sa-20161026-01-pxn-cn/) |  | Elevation of privilege | huawei advisories 2016-10
+[CVE-2015-7740](http://www.huawei.com/cn/psirt/security-advisories/2015/hw-460487) |  | Dos | huawei advisories 2015-11
+[CVE-2015-8225](http://www.huawei.com/cn/psirt/security-advisories/2015/hw-465531) |  | Dos | huawei advisories 2015-12
+[CVE-2015-8226](http://www.huawei.com/cn/psirt/security-advisories/2015/hw-465531) |  | Dos | huawei advisories 2015-12
+[CVE-2017-0509](http://www.huawei.com/en/psirt/security-advisories/huawei-sa-20161214-02-smartphone-en) |  | Elevation of privilege | huawei advisories 2016-12
+[]() |  | Dos | huawei advisories 2015-11
+
 # Exploits 
 
 CVE Number | Feature | Keywords | Device 
