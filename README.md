@@ -53,7 +53,7 @@ CVE Number | Feature | Keywords | Bulletin
 ## Qualcomm
 
 CVE Number | Feature | Keywords | Bulletin 
----------- | ------- | -------- | ------
+--------------- | ------- | -------- | ------
 [CVE-2017-14883](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-3.0/commit/?id=3de34af4e2ca91e1a2260deb380b81620a631c85) | wlan host | Integer Overflow | [201805 Qual Bulletin](https://www.codeaurora.org/security-bulletin/2018/05/11/may-2018-code-aurora-security-bulletin-2)
 [CVE-2017-14884](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-2.0/commit/?id=0ce15ef4075719a82858b7324690be7011cab832) | wlan host |　Buffer Copy without Checking Size of Input in WLAN |[201805 Qual Bulletin](https://www.codeaurora.org/security-bulletin/2018/05/11/may-2018-code-aurora-security-bulletin-2)
 [CVE-2017-14888](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-3.0/commit/?id=d50dfd647b2396d2e2c05b7aee84d831e4a18d68) | wlan host |　Buffer Copy without Checking Size of Input in WLAN |[201805 Qual Bulletin](https://www.codeaurora.org/security-bulletin/2018/05/11/may-2018-code-aurora-security-bulletin-2)
