@@ -116,3 +116,9 @@ CVE Number | Feature | Keywords | Device
 [CVE-2016-2434](./EXP-CVE-2016-2434/readme.md) | NVIDIA video driver |  | nexus 9
 [CVE-2016-2435](./EXP-CVE-2016-2435/readme.md) | NVIDIA video driver |  | nexus 9 
 [CVE-2016-3857](./EXP-CVE-2016-3857/readme.md) | linux kernel |  | nexus 7 
+[CVE-2016-2384](./EXP-CVE-2016-2384) | a double-free in USB MIDI driver | | linux pc
+[CVE-2016-9793](./EXP-CVE-2016-9793)| a signedness issue with SO\_SNDBUFFORCE and SO\_RCVBUFFORCE socket options | | linux pc
+[CVE-2017-6074](./EXP-CVE-2017-6074)| a double-free in DCCP protocol | | linux pc
+[CVE-2017-7308](./EXP-CVE-2017-7308)| a signedness issue in AF\_PACKET sockets | | linux pc
+[CVE-2017-1000112](./EXP-CVE-2017-1000112)| a memory corruption due to UFO to non-UFO path switch | | linux pc
+
