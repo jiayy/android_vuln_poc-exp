@@ -1,4 +1,4 @@
-# Vulnerabilities Discovered By Me
+# Vulnerabilities Discovered By Me (mostly)
 
 ## Google
 
@@ -121,4 +121,4 @@ CVE Number | Feature | Keywords | Device
 [CVE-2017-6074](./EXP-CVE-2017-6074)| a double-free in DCCP protocol | | linux pc
 [CVE-2017-7308](./EXP-CVE-2017-7308)| a signedness issue in AF\_PACKET sockets | | linux pc
 [CVE-2017-1000112](./EXP-CVE-2017-1000112)| a memory corruption due to UFO to non-UFO path switch | | linux pc
-
+[CVE-2018-17182](./EXP-CVE-2018-17182) |a cache invalidation bug in linux|| linux pc
