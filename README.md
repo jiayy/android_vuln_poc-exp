@@ -122,3 +122,4 @@ CVE Number | Feature | Keywords | Device
 [CVE-2017-7308](./EXP-CVE-2017-7308)| a signedness issue in AF\_PACKET sockets | | linux pc
 [CVE-2017-1000112](./EXP-CVE-2017-1000112)| a memory corruption due to UFO to non-UFO path switch | | linux pc
 [CVE-2018-17182](./EXP-CVE-2018-17182) |a cache invalidation bug in linux|| linux pc
+[CVE-2018-18281](./EXP-CVE-2018-18281) |a uaf bug in linux caused by TLB late flush|| pixel2
