@@ -138,38 +138,37 @@ CVE Number | Feature | Keywords | Bulletin
 
 ## Huawei
 
-CVE Number | Feature | Keywords | Bulletin 
----------- | ------- | -------- | ------
-[CVE-2015-8223](http://www.huawei.com/en/psirt/security-advisories/hw-460489) |  | Dos | huawei advisories 2015-11
-[CVE-2015-8679](http://www.huawei.com/cn/psirt/security-advisories/huawei-sa-20160105-01-smartphone-cn) |  | Dos | huawei advisories 2016-02
-[CVE-2015-8678](http://www.huawei.com/cn/psirt/security-advisories/huawei-sa-20160105-01-smartphone-cn) |  | Dos | huawei advisories 2016-02
-[CVE-2016-8768](http://www.huawei.com/cn/psirt/security-advisories/huawei-sa-20161026-01-pxn-cn/) |  | Elevation of privilege | huawei advisories 2016-10
-[CVE-2015-7740](http://www.huawei.com/cn/psirt/security-advisories/2015/hw-460487) |  | Dos | huawei advisories 2015-11
-[CVE-2015-8225](http://www.huawei.com/cn/psirt/security-advisories/2015/hw-465531) |  | Dos | huawei advisories 2015-12
-[CVE-2015-8226](http://www.huawei.com/cn/psirt/security-advisories/2015/hw-465531) |  | Dos | huawei advisories 2015-12
-[CVE-2017-0509](http://www.huawei.com/en/psirt/security-advisories/huawei-sa-20161214-02-smartphone-en) |  | Elevation of privilege | huawei advisories 2016-12
-[]() |  | Dos | huawei advisories 2015-11
+CVE Number | Type | Bulletin 
+---------- | ------- | ------
+[CVE-2015-8223](http://www.huawei.com/en/psirt/security-advisories/hw-460489) | Dos | huawei advisories 2015-11
+[CVE-2015-8679](http://www.huawei.com/cn/psirt/security-advisories/huawei-sa-20160105-01-smartphone-cn) | Dos | huawei advisories 2016-02
+[CVE-2015-8678](http://www.huawei.com/cn/psirt/security-advisories/huawei-sa-20160105-01-smartphone-cn) | Dos | huawei advisories 2016-02
+[CVE-2016-8768](http://www.huawei.com/cn/psirt/security-advisories/huawei-sa-20161026-01-pxn-cn/) | Elevation of privilege | huawei advisories 2016-10
+[CVE-2015-7740](http://www.huawei.com/cn/psirt/security-advisories/2015/hw-460487) | Dos | huawei advisories 2015-11
+[CVE-2015-8225](http://www.huawei.com/cn/psirt/security-advisories/2015/hw-465531) | Dos | huawei advisories 2015-12
+[CVE-2015-8226](http://www.huawei.com/cn/psirt/security-advisories/2015/hw-465531) | Dos | huawei advisories 2015-12
+[CVE-2017-0509](http://www.huawei.com/en/psirt/security-advisories/huawei-sa-20161214-02-smartphone-en) | Elevation of privilege | huawei advisories 2016-12
 
 # Exploits 
 
-CVE Number | Feature | Keywords | Device 
----------- | ------- | -------- | ------
-[CVE-2015-5165](./EXP-2015-5165/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | qemu |  | ubuntu 
-[CVE-2015-7504](./EXP-2015-7504/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | qemu |  | ubuntu 
-[CVE-2016-3935](./EXP-CVE-2016-3935/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | msm crypto driver | Integer Overflow | nexus 6p 
-[CVE-2016-0844](./EXP-CVE-2016-0844) | msm ipa driver | Array Overflow, OOB | nexus 6p 
-[CVE-2016-6038](./EXP-CVE-2016-6738/readme.md) | msm crypto driver | Arbitrary Address Write | nexus 6p 
-[CVE-2016-2411](./EXP-CVE-2016-2411/readme.md) | Qualcomm Power Management driver |  | nexus 5x 
-[CVE-2016-2434](./EXP-CVE-2016-2434/readme.md) | NVIDIA video driver |  | nexus 9
-[CVE-2016-2435](./EXP-CVE-2016-2435/readme.md) | NVIDIA video driver |  | nexus 9 
-[CVE-2016-3857](./EXP-CVE-2016-3857/readme.md) | linux kernel |  | nexus 7 
-[CVE-2016-2384](./EXP-CVE-2016-2384) | a double-free in USB MIDI driver | | linux pc
-[CVE-2016-9793](./EXP-CVE-2016-9793)| a signedness issue with SO\_SNDBUFFORCE and SO\_RCVBUFFORCE socket options | | linux pc
-[CVE-2017-6074](./EXP-CVE-2017-6074)| a double-free in DCCP protocol | | linux pc
-[CVE-2017-7308](./EXP-CVE-2017-7308)| a signedness issue in AF\_PACKET sockets | | linux pc
-[CVE-2017-1000112](./EXP-CVE-2017-1000112)| a memory corruption due to UFO to non-UFO path switch | | linux pc
-[CVE-2018-17182](./EXP-CVE-2018-17182) |a cache invalidation bug in linux|| linux pc
-[CVE-2018-18281](./EXP-CVE-2018-18281) |a uaf bug in linux caused by TLB late flush|| pixel2
-[CVE-2019-13272](./EXP-CVE-2019-13272) | Linux 4.10 < 5.1.17 PTRACE_TRACEME local root on x86-64 | ptrace | ubuntu 
-[CVE-2019-13272](./EXP-CVE-2019-13272-aarch64) | Linux 4.10 < 5.1.17 PTRACE_TRACEME local root on aarch64 | ptrace | ubuntu 
+CVE Number | Feature | Device 
+---------- | ------- | ------
+[CVE-2015-5165](./EXP-2015-5165/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | qemu | ubuntu 
+[CVE-2015-7504](./EXP-2015-7504/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | qemu | ubuntu 
+[CVE-2016-3935](./EXP-CVE-2016-3935/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | msm crypto driver | nexus 6p 
+[CVE-2016-0844](./EXP-CVE-2016-0844) | msm ipa driver | nexus 6p 
+[CVE-2016-6038](./EXP-CVE-2016-6738/readme.md) | msm crypto driver | nexus 6p 
+[CVE-2016-2411](./EXP-CVE-2016-2411/readme.md) | Qualcomm Power Management driver | nexus 5x 
+[CVE-2016-2434](./EXP-CVE-2016-2434/readme.md) | NVIDIA video driver |nexus 9
+[CVE-2016-2435](./EXP-CVE-2016-2435/readme.md) | NVIDIA video driver |nexus 9 
+[CVE-2016-3857](./EXP-CVE-2016-3857/readme.md) | linux kernel |nexus 7 
+[CVE-2016-2384](./EXP-CVE-2016-2384) | double-free in USB MIDI driver |linux pc
+[CVE-2016-9793](./EXP-CVE-2016-9793)| signedness issue with SO\_SNDBUFFORCE and SO\_RCVBUFFORCE socket options |linux pc
+[CVE-2017-6074](./EXP-CVE-2017-6074)| double-free in DCCP protocol |linux pc
+[CVE-2017-7308](./EXP-CVE-2017-7308)| signedness issue in AF\_PACKET sockets |linux pc
+[CVE-2017-1000112](./EXP-CVE-2017-1000112)| memory corruption due to UFO to non-UFO path switch |linux pc
+[CVE-2018-17182](./EXP-CVE-2018-17182) | cache invalidation bug in linux|linux pc
+[CVE-2018-18281](./EXP-CVE-2018-18281) | uaf caused by TLB late flush|pixel2
+[CVE-2019-13272](./EXP-CVE-2019-13272) | PTRACE_TRACEME local root on x86-64 | ubuntu 
+[CVE-2019-13272](./EXP-CVE-2019-13272-aarch64) | PTRACE_TRACEME local root on aarch64 | ubuntu 
 
