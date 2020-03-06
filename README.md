@@ -2,27 +2,9 @@
 
 ## Google
 
-<style>
-table th:first-of-type {
-    width: 20%;
-}
-table th:nth-of-type(2) {
-    width: 20%;
-}
-table th:nth-of-type(3) {
-    width: 20%;
-}
-table th:nth-of-type(4) {
-    width: 20%;
-}
-table th:nth-of-type(5) {
-    width: 20%;
-}
-</style>
-
 CVE Number | Feature | Keywords | Bulletin 
 ---------- | ------- | -------- | ------
-[CVE-2016-0805](./CVE-2016-0805/readme.md) | perf_event_open | Buffer Overflow, OOB | Android bulletin 2016-02
+[CVE-2016-0805](./CVE-2016-0805/readme.md) &nbsp; &nbsp; &nbsp;  | perf_event_open | Buffer Overflow, OOB | Android bulletin 2016-02
 [CVE-2016-0844](./CVE-2016-0844/readme.md) | msm ipa driver | Array Overflow, OOB | Android bulletin 2016-04
 [CVE-2016-3869](./CVE-2016-3869/readme.md) | bcmdhd driver | Array Overflow, OOB | Android bulletin 2016-09
 [CVE-2016-3865](./CVE-2016-3865/readme.md) | touchscreen driver | Stack Overflow, OOB | Android bulletin 2016-09
@@ -103,7 +85,7 @@ CVE Number | Feature | Keywords | Bulletin
 
 CVE Number | Feature | Keywords | Bulletin 
 --------------- | ------- | -------- | ------
-[cve-2019-10584](https://source.codeaurora.org/quic/la/kernel/msm-4.4/commit/?id=f1057f82fa62cca8315ea0fbb713fe1e92a409a8) | video | overread | [201912 Qual Bulletin](https://www.qualcomm.com/company/product-security/bulletins/december-2019-bulletin)
+[cve-2019-10584](https://source.codeaurora.org/quic/la/kernel/msm-4.4/commit/?id=f1057f82fa62cca8315ea0fbb713fe1e92a409a8) &nbsp; &nbsp; &nbsp; | video | overread | [201912 Qual Bulletin](https://www.qualcomm.com/company/product-security/bulletins/december-2019-bulletin)
 [cve-2019-10563](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-3.0/commit/?id=468ffaac90d93623bbc2f8f6743c4e4e0b9a53f5) | wlan host | Buffer Overflow | [201910 Qual Bulletin](https://www.qualcomm.com/company/product-security/bulletins/october-2019-bulletin)
 [cve-2019-2302](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-3.0/commit/?id=9c2c22372f35c5e9fdea4962f02083f879226400) | wlan host | Buffer Overflow | [201910 Qual Bulletin](https://www.qualcomm.com/company/product-security/bulletins/october-2019-bulletin)
 [cve-2019-10542](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-2.0/commit/?id=20b956dbc8b19d719dbe6ca3bfde781e6f64be49) | wlan host | Buffer Overflow | [201909 Qual Bulletin](https://www.qualcomm.com/company/product-security/bulletins/september-2019-bulletin)
