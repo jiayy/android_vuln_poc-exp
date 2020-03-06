@@ -2,6 +2,24 @@
 
 ## Google
 
+<style>
+table th:first-of-type {
+    width: 20%;
+}
+table th:nth-of-type(2) {
+    width: 20%;
+}
+table th:nth-of-type(3) {
+    width: 20%;
+}
+table th:nth-of-type(4) {
+    width: 20%;
+}
+table th:nth-of-type(5) {
+    width: 20%;
+}
+</style>
+
 CVE Number | Feature | Keywords | Bulletin 
 ---------- | ------- | -------- | ------
 [CVE-2016-0805](./CVE-2016-0805/readme.md) | perf_event_open | Buffer Overflow, OOB | Android bulletin 2016-02
