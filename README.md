@@ -48,12 +48,56 @@ CVE Number | Feature | Keywords | Bulletin
 [CVE-2017-9691](./CVE-2017-9691/readme.md) | MobiCore driver | Race Condition Info Leak | Android bulletin 2017-08
 [CVE-2017-10997](./CVE-2017-10997/readme.md) | msm pci driver | Buffer Overflow, OOB | Android bulletin 2017-09
 [CVE-2017-8244](./CVE-2017-8244/readme.md) | msm vidc debugfs driver | Buffer Overflow, OOB | Android bulletin 2017-12
+[CVE-2017-18153](https://source.android.com/security/overview/acknowledgements?hl=en) | N | OOB | Android bulletin 2018-05
+[CVE-2018-11302](https://source.android.com/security/bulletin/pixel/2019-09-01) | N | OOB | Android bulletin 2019-09
+[cve-2018-5855](https://source.android.com/security/overview/acknowledgements?hl=en) | N | OOB | Android bulletin 2019-04
+[cve-2018-11905](https://source.android.com/security/overview/acknowledgements?hl=en) | N | OOB | Android bulletin 2019-04
+[CVE-2018-11825](https://source.android.com/security/overview/release-acknowledgements?hl=en) | N | OOB | Android release acknowledgements 
+[CVE-2018-13890](https://source.android.com/security/overview/release-acknowledgements?hl=en) | N | OOB | Android release acknowledgements 
+[CVE-2019-2299](https://source.android.com/security/overview/release-acknowledgements?hl=en) | N | OOB | Android release acknowledgements 
+[CVE-2019-2302](https://source.android.com/security/overview/release-acknowledgements?hl=en) | N | OOB | Android release acknowledgements 
+[CVE-2019-2312](https://source.android.com/security/overview/release-acknowledgements?hl=en) | N | OOB | Android release acknowledgements 
+[CVE-2019-2314](https://source.android.com/security/overview/release-acknowledgements?hl=en) | N | OOB | Android release acknowledgements 
+[CVE-2019-9248](https://source.android.com/security/overview/release-acknowledgements?hl=en) | N | OOB | Android release acknowledgements 
+[CVE-2019-9386](https://source.android.com/security/overview/release-acknowledgements?hl=en) | N | OOB | Android release acknowledgements 
+[CVE-2019-9448](https://source.android.com/security/overview/release-acknowledgements?hl=en) | N | OOB | Android release acknowledgements 
+[CVE-2019-9449](https://source.android.com/security/overview/release-acknowledgements?hl=en) | N | OOB | Android release acknowledgements 
+[CVE-2019-9450](https://source.android.com/security/overview/release-acknowledgements?hl=en) | N | OOB | Android release acknowledgements 
+[CVE-2019-9451](https://source.android.com/security/overview/release-acknowledgements?hl=en) | N | OOB | Android release acknowledgements 
+[CVE-2019-9452](https://source.android.com/security/overview/release-acknowledgements?hl=en) | N | OOB | Android release acknowledgements 
+[CVE-2019-10506](https://source.android.com/security/overview/release-acknowledgements?hl=en) | N | OOB | Android release acknowledgements 
+[CVE-2017-14888](https://source.android.com/security/overview/release-acknowledgements?hl=en) | N | OOB | Android release acknowledgements 
+[CVE-2018-11302](https://source.android.com/security/overview/release-acknowledgements?hl=en) | N | OOB | Android release acknowledgements 
+[CVE-2019-10542](https://source.android.com/security/overview/release-acknowledgements?hl=en) | N | OOB | Android release acknowledgements 
+[cve-2019-2206](https://source.android.com/security/overview/acknowledgements?hl=en) | N | OOB | Android bulletin 2019-11
+[cve-2019-2297](https://source.android.com/security/overview/acknowledgements?hl=en) | N | OOB | Android bulletin 2019-10
+[cve-2019-10566](https://source.android.com/security/overview/acknowledgements?hl=en) | N | OOB | Android bulletin 2019-10
+[CVE-2019-10584](https://source.android.com/security/overview/acknowledgements?hl=en) | N | OOB | Android bulletin 2020-03
+[CVE-2020-0055](https://source.android.com/security/overview/acknowledgements?hl=en) | N | OOB | Android bulletin 2020-03
+[CVE-2020-0056](https://source.android.com/security/overview/acknowledgements?hl=en) | N | OOB | Android bulletin 2020-03
+[CVE-2020-0057](https://source.android.com/security/overview/acknowledgements?hl=en) | N | OOB | Android bulletin 2020-03
+[CVE-2020-0058](https://source.android.com/security/overview/acknowledgements?hl=en) | N | OOB | Android bulletin 2020-03
+[CVE-2020-0059](https://source.android.com/security/overview/acknowledgements?hl=en) | N | OOB | Android bulletin 2020-03
+[CVE-2020-0005](https://source.android.com/security/overview/acknowledgements?hl=en) | N | OOB | Android bulletin 2020-02
 
 
 ## Qualcomm
 
 CVE Number | Feature | Keywords | Bulletin 
 --------------- | ------- | -------- | ------
+[cve-2019-10584](https://source.codeaurora.org/quic/la/kernel/msm-4.4/commit/?id=f1057f82fa62cca8315ea0fbb713fe1e92a409a8) | video | overread | [201912 Qual Bulletin](https://www.qualcomm.com/company/product-security/bulletins/december-2019-bulletin)
+[cve-2019-10563](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-3.0/commit/?id=468ffaac90d93623bbc2f8f6743c4e4e0b9a53f5) | wlan host | Buffer Overflow | [201910 Qual Bulletin](https://www.qualcomm.com/company/product-security/bulletins/october-2019-bulletin)
+[cve-2019-2302](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-3.0/commit/?id=9c2c22372f35c5e9fdea4962f02083f879226400) | wlan host | Buffer Overflow | [201910 Qual Bulletin](https://www.qualcomm.com/company/product-security/bulletins/october-2019-bulletin)
+[cve-2019-10542](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-2.0/commit/?id=20b956dbc8b19d719dbe6ca3bfde781e6f64be49) | wlan host | Buffer Overflow | [201909 Qual Bulletin](https://www.qualcomm.com/company/product-security/bulletins/september-2019-bulletin)
+[cve-2019-2312](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-3.0/commit/?id=9f1a091072339a33382c36a0e55df75a9621d1c3) | wlan host | Buffer Overflow | [201907 Qual Bulletin](https://www.codeaurora.org/security-bulletin/2019/07/01/july-2019-code-aurora-security-bulletin)
+[cve-2019-2314](https://source.codeaurora.org/quic/la/kernel/msm-4.9/commit/?id=95bfa6cf89482c795e54ce4ee026ef068c9495c7) | display | uaf | [201907 Qual Bulletin](https://www.codeaurora.org/security-bulletin/2019/07/01/july-2019-code-aurora-security-bulletin)
+[cve-2018-5883](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-3.0/commit/?id=a67fee043d7459b1c09033b4ca24c41fab5ea4a9) | wlan host | Buffer Overflow | [201905 Qual Bulletin](https://www.codeaurora.org/security-bulletin/2019/05/06/may-2019-code-aurora-security-bulletin)
+[cve-2018-5911](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-3.0/commit/?id=ea2fc6eef2c742467f0322d0ff0fc7ba6c917f66) | wlan host | Buffer Overflow | [201905 Qual Bulletin](https://www.codeaurora.org/security-bulletin/2019/05/06/may-2019-code-aurora-security-bulletin)
+[cve-2018-11905](https://source.codeaurora.org/quic/la/kernel/msm-4.4/commit/?id=0cdcf0409bdad7ed91c11d7715c89acc2e521e96) | dsp | Buffer Overflow | [201904 Qual Bulletin](https://www.codeaurora.org/security-bulletin/2019/04/01/april-2019-code-aurora-security-bulletin)
+[cve-2018-11293](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-2.0/commit/?id=6fb7ac8d49631cdd09dbe72669d1a660dfce3bdb) | N | Overflow | [201809 Qual Bulletin](https://www.codeaurora.org/security-bulletin/2018/09/04/september-2018-code-aurora-security-bulletin)
+[cve-2018-11297](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-3.0/commit/?id=c708606086490ca9b8fc1077f18782891a595ba9) | wlan host | Buffer Overflow | [201809 Qual Bulletin](https://www.codeaurora.org/security-bulletin/2018/09/04/september-2018-code-aurora-security-bulletin)
+[cve-2018-11302](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-3.0/commit/?id=4178ed2227bbc48d4313bc4e7d604d2813c0d9f4) | wlan host | Buffer Overflow | [201809 Qual Bulletin](https://www.codeaurora.org/security-bulletin/2018/09/04/september-2018-code-aurora-security-bulletin)
+[cve-2018-11886](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-3.0/commit/?id=cc0e6489d67d3fc7b196cf6806a7a5edcff33a88) | wlan host | Buffer Overflow | [201809 Qual Bulletin](https://www.codeaurora.org/security-bulletin/2018/09/04/september-2018-code-aurora-security-bulletin)
 [CVE-2018-3577](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-2.0/commit/?id=cf1c43ce8840021d2907afaa6c514e6971d7ebac) | wlan host | Integer Overflow toBuffer Overflow | [201807 Qual Bulletin](https://www.codeaurora.org/security-bulletin/2018/07/02/july-2018-code-aurora-security-bulletin)
 [CVE-2018-5830](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-2.0/commit/?id=129e76e0ea923b319555f37ea601dfb974a06bfe) | wlan host | Improper Restriction of Operations within the Bounds of a Memory Buffer | [201807 Qual Bulletin](https://www.codeaurora.org/security-bulletin/2018/07/02/july-2018-code-aurora-security-bulletin)
 [CVE-2018-5864](https://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/qcacld-2.0/commit/?id=9c042f7827e0d21e5b93c04b418bca0230de91dc) | wlan host | Improper Restriction of Operations within the Bounds of a Memory Buffer | [201807 Qual Bulletin](https://www.codeaurora.org/security-bulletin/2018/07/02/july-2018-code-aurora-security-bulletin)
