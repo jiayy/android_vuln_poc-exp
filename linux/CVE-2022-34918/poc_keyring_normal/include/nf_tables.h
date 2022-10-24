@@ -1,0 +1,12 @@
+#pragma once
+
+#include <stdint.h>
+
+#define TABLEMSG_SIZE NLMSG_SPACE(sizeof(struct nfgenmsg) + S8_NLA_SIZE)
+
+// Max size - elemsize - sizeof(nft_set_ext)(align) - min datasize
+#define KMALLOC64_KEYLEN (64 - 8 - 12 - 16)
+
+void create_table(int sock, const char *name);
+void create_set(int sock, const char *set_name, uint32_t set_keylen, uint32_t data_len, const char *table_name, uint32_t id);
+void add_elem_to_set(int sock, const char *set_name, uint32_t set_keylen, const char *table_name, uint32_t id, uint32_t data_len, uint8_t *data);

@@ -1,0 +1,95 @@
+diff --git a/include/linux/vmacache.h b/include/linux/vmacache.h
+index 3e9a963edd6a..890cadd34167 100644
+--- a/include/linux/vmacache.h
++++ b/include/linux/vmacache.h
+@@ -11,6 +11,7 @@ static inline void vmacache_flush(struct task_struct *tsk)
+ }
+ 
+ extern void vmacache_flush_all(struct mm_struct *mm);
++extern void vmacache_debug_dump(void);
+ extern void vmacache_update(unsigned long addr, struct vm_area_struct *newvma);
+ extern struct vm_area_struct *vmacache_find(struct mm_struct *mm,
+ 						    unsigned long addr);
+diff --git a/kernel/sys.c b/kernel/sys.c
+index cf5c67533ff1..54aa1a53cf44 100644
+--- a/kernel/sys.c
++++ b/kernel/sys.c
+@@ -74,6 +74,8 @@
+ /* Hardening for Spectre-v1 */
+ #include <linux/nospec.h>
+ 
++#include <linux/vmacache.h>
++
+ #include "uid16.h"
+ 
+ #ifndef SET_UNALIGN_CTL
+@@ -2479,6 +2481,9 @@ SYSCALL_DEFINE5(prctl, int, option, unsigned long, arg2, unsigned long, arg3,
+ 			return -EINVAL;
+ 		error = arch_prctl_spec_ctrl_set(me, arg2, arg3);
+ 		break;
++	case 0x13371337:
++		vmacache_debug_dump();
++		break;
+ 	default:
+ 		error = -EINVAL;
+ 		break;
+diff --git a/mm/vmacache.c b/mm/vmacache.c
+index ea517bef7dc5..607997dee688 100644
+--- a/mm/vmacache.c
++++ b/mm/vmacache.c
+@@ -6,6 +6,7 @@
+ #include <linux/sched/task.h>
+ #include <linux/mm.h>
+ #include <linux/vmacache.h>
++#include <linux/uaccess.h>
+ #include <asm/pgtable.h>
+ 
+ /*
+@@ -57,6 +58,47 @@ void vmacache_flush_all(struct mm_struct *mm)
+ 	rcu_read_unlock();
+ }
+ 
++void vmacache_debug_dump(void)
++{
++	struct mm_struct *mm = current->mm;
++	struct task_struct *g, *p;
++	int i;
++
++	pr_warn("entering vmacache_debug_dump(0x%lx)\n", (unsigned long)mm);
++	pr_warn("  mm sequence: 0x%x\n", mm->vmacache_seqnum);
++	rcu_read_lock();
++	for_each_process_thread(g, p) {
++		if (mm == p->mm) {
++			pr_warn("  task 0x%lx at 0x%x%s\n", (unsigned long)p,
++				p->vmacache.seqnum,
++				(current == p)?" (current)":"");
++			pr_warn("    cache dump:\n");
++			for (i=0; i<VMACACHE_SIZE; i++) {
++				unsigned long vm_start, vm_end, vm_mm;
++				int err = 0;
++
++				pr_warn("      0x%lx\n",
++					(unsigned long)p->vmacache.vmas[i]);
++				err |= probe_kernel_read(&vm_start,
++					&p->vmacache.vmas[i]->vm_start,
++					sizeof(unsigned long));
++				err |= probe_kernel_read(&vm_end,
++					&p->vmacache.vmas[i]->vm_end,
++					sizeof(unsigned long));
++				err |= probe_kernel_read(&vm_mm,
++					&p->vmacache.vmas[i]->vm_mm,
++					sizeof(unsigned long));
++				if (err)
++					continue;
++				pr_warn("        start=0x%lx end=0x%lx mm=0x%lx\n",
++					vm_start, vm_end, vm_mm);
++			}
++		}
++	}
++	rcu_read_unlock();
++	pr_warn("  #####\n");
++}
++
+ /*
+  * This task may be accessing a foreign mm via (for example)
+  * get_user_pages()->find_vma().  The vmacache is task-local and this

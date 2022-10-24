@@ -1,0 +1,89 @@
+.\" Copyright (C) 2020 Jens Axboe <axboe@kernel.dk>
+.\" Copyright (C) 2020 Red Hat, Inc.
+.\"
+.\" SPDX-License-Identifier: LGPL-2.0-or-later
+.\"
+.TH io_uring_queue_init 3 "July 10, 2020" "liburing-0.7" "liburing Manual"
+.SH NAME
+io_uring_queue_init \- setup io_uring submission and completion queues
+.SH SYNOPSIS
+.nf
+.B #include <liburing.h>
+.PP
+.BI "int io_uring_queue_init(unsigned " entries ","
+.BI "                        struct io_uring *" ring ","
+.BI "                        unsigned " flags ");"
+.PP
+.BI "int io_uring_queue_init_params(unsigned " entries ","
+.BI "                               struct io_uring *" ring ","
+.BI "                               struct io_uring_params *" params ");"
+.fi
+.SH DESCRIPTION
+.PP
+The
+.BR io_uring_queue_init (3)
+function executes the
+.BR io_uring_setup (2)
+system call to initialize the submission and completion queues in the kernel
+with at least
+.I entries
+entries in the submission queue and then maps the resulting file descriptor to
+memory shared between the application and the kernel.
+
+By default, the CQ ring will have twice the number of entries as specified by
+.I entries
+for the SQ ring. This is adequate for regular file or storage workloads, but
+may be too small networked workloads. The SQ ring entries do not impose a limit
+on the number of in-flight requests that the ring can support, it merely limits
+the number that can be submitted to the kernel in one go (batch). if the CQ
+ring overflows, e.g. more entries are generated than fits in the ring before the
+application can reap them, then the ring enters a CQ ring overflow state. This
+is indicated by
+.B IORING_SQ_CQ_OVERFLOW
+being set in the SQ ring flags. Unless the kernel runs out of available memory,
+entries are not dropped, but it is a much slower completion path and will slow
+down request processing. For that reason it should be avoided and the CQ
+ring sized appropriately for the workload. Setting
+.I cq_entries
+in
+.I struct io_uring_params
+will tell the kernel to allocate this many entries for the CQ ring, independent
+of the SQ ring size in given in
+.IR entries .
+If the value isn't a power of 2, it will be rounded up to the nearest power of
+2.
+
+On success,
+.BR io_uring_queue_init (3)
+returns 0 and
+.I ring
+will point to the shared memory containing the io_uring queues. On failure
+.BR -errno
+is returned.
+
+.I flags
+will be passed through to the io_uring_setup syscall (see
+.BR io_uring_setup (2)).
+
+If the
+.BR io_uring_queue_init_params (3)
+variant is used, then the parameters indicated by
+.I params
+will be passed straight through to the
+.BR io_uring_setup (2)
+system call.
+
+On success, the resources held by
+.I ring
+should be released via a corresponding call to
+.BR io_uring_queue_exit (3).
+.SH RETURN VALUE
+.BR io_uring_queue_init (3)
+returns 0 on success and
+.BR -errno
+on failure.
+.SH SEE ALSO
+.BR io_uring_setup (2),
+.BR io_uring_register_ring_fd (3),
+.BR mmap (2),
+.BR io_uring_queue_exit (3)

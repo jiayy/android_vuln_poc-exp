@@ -4,50 +4,50 @@
 
 CVE Number | Feature | Keywords | Bulletin 
 ---------- | ------- | -------- | ------
-[CVE-2016-0805](./CVE-2016-0805/readme.md) &nbsp; &nbsp; &nbsp;  | perf_event_open | Buffer Overflow, OOB | Android bulletin 2016-02
-[CVE-2016-0844](./CVE-2016-0844/readme.md) | msm ipa driver | Array Overflow, OOB | Android bulletin 2016-04
-[CVE-2016-3869](./CVE-2016-3869/readme.md) | bcmdhd driver | Array Overflow, OOB | Android bulletin 2016-09
-[CVE-2016-3865](./CVE-2016-3865/readme.md) | touchscreen driver | Stack Overflow, OOB | Android bulletin 2016-09
-[CVE-2016-3866](./cve-2016-3866/readme.md) | msm sound driver | Buffer Overflow, OOB | Android bulletin 2016-09
-[CVE-2016-3867](./CVE-2016-3867/readme.md) | msm ipa driver | Race Heap Overflow | Android bulletin 2016-09
-[CVE-2016-3935](./cve-2016-3935/readme.md) | msm crypto driver | Integer Overflow | Android bulletin 2016-10
-[CVE-2016-5195](./cve-2016-5195/readme.md) |  |  | 
-[CVE-2016-6690](./cve-2016-6690/readme.md) | msm sound driver | Arbitrary Address Write | Android bulletin 2016-10
-[CVE-2016-3901](./cve-2016-3901/readme.md) | msm crypto driver | Heap Overflow | Android bulletin 2016-10
-[CVE-2016-3940](./cve-2016-3940/readme.md) | touchscreen driver | Stack Overflow, OOB | Android bulletin 2016-10
-[CVE-2016-6672](./cve-2016-6672/readme.md) | touchscreen driver | Stack Overflow, OOB | Android bulletin 2016-10
-[CVE-2016-6738](./CVE-2016-6738/readme.md) | msm crypto driver | Arbitrary Address Write | Android bulletin 2016-11
-[CVE-2016-3906](./CVE-2016-3906/readme.md) | msm core driver | Info Leak | Android bulletin 2016-11
-[CVE-2016-6725](./CVE-2016-6725/readme.md) | qcom crypto driver | Integer Overflow | Android bulletin 2016-11
-[CVE-2016-6740](./CVE-2016-6740/readme.md) | msm camera driver | Stack Overflow | Android bulletin 2016-11
-[CVE-2016-6741](./CVE-2016-6741/readme.md) | msm camera driver | Stack Overflow | Android bulletin 2016-11
-[CVE-2016-6742](./CVE-2016-6742/readme.md) | touchscreen driver | Heap Overflow | Android bulletin 2016-11
-[CVE-2016-6744](./CVE-2016-6744/readme.md) | touchscreen driver | Stack Overflow | Android bulletin 2016-11
-[CVE-2016-6745](./CVE-2016-6745/readme.md) | touchscreen driver | Race Heap Overflow | Android bulletin 2016-11
-[CVE-2016-8464](./CVE-2016-8464/readme.md) | bcmdhd driver | Heap Overflow, OOB | Android bulletin 2017-01
-[CVE-2017-0434](./CVE-2017-0434/readme.md) | Synaptics touchscreen driver | Race Condition UAF | Android bulletin 2017-02
-[CVE-2017-0446](./CVE-2017-0446/readme.md) | htc touchscreen driver | Race Condition UAF | Android bulletin 2017-02
-[CVE-2017-0447](./CVE-2017-0447/readme.md) | htc touchscreen driver | Race Condition UAF | Android bulletin 2017-02
-[CVE-2017-0432](./CVE-2017-0432/readme.md) | mtk driver | Array Overflow, OOB | Android bulletin 2017-02
-[CVE-2017-0524](./CVE-2017-0524/readme.md) | htc touchscreen driver | Race Condition UAF | Android bulletin 2017-03
-[CVE-2017-0536](./CVE-2017-0536/readme.md) | Synaptics touchscreen driver | Info Leak | Android bulletin 2017-03
-[CVE-2017-0329](./CVE-2017-0329/readme.md) | tegra driver | Buffer Overflow, OOB | Android bulletin 2017-04
-[CVE-2017-6426](./CVE-2017-6426/readme.md) | Qualcomm SPMI driver | Info Leak | Android bulletin 2017-04
-[CVE-2017-0332](./CVE-2017-0332/readme.md) | tegra crypto driver | Buffer Overflow, OOB | Android bulletin 2017-04
-[CVE-2016-10285](./CVE-2016-10285/readme.md) | msm mdss driver | Info Leak | Android bulletin 2017-05
-[CVE-2016-10288](./CVE-2016-10288/readme.md) | qcom led driver | UAF | Android bulletin 2017-05
-[CVE-2016-10290](./CVE-2016-10290/readme.md) | qcom sharedmem driver | Race Condition UAF | Android bulletin 2017-05
-[CVE-2017-0624](./CVE-2017-0624/readme.md) | qcom wlan driver | Race Condition UAF | Android bulletin 2017-05
-[CVE-2016-10294](./CVE-2016-10294/readme.md) | qcom power management driver | Race Condition infoleak | Android bulletin 2017-05
-[CVE-2016-10295](./CVE-2016-10295/readme.md) | qcom led driver | Race Condition infoleak | Android bulletin 2017-05
-[CVE-2016-10296](./CVE-2016-10296/readme.md) | qcom sharedmem driver | Race Condition infoleak | Android bulletin 2017-05
-[CVE-2017-8243](./CVE-2017-8243/readme.md) | qcom soc driver | Buffer Overflow, OOB | Android bulletin 2017-07
-[CVE-2017-8266](./CVE-2017-8266/readme.md) | msm video driver  | Race Condition UAF | Android bulletin 2017-07
-[CVE-2017-8270](./CVE-2017-8270/readme.md) | msm wlan driver | Race Condition UAF | Android bulletin 2017-07
-[CVE-2017-0744](./CVE-2017-0744/readme.md) | tegra sound driver | Buffer Overflow, OOB | Android bulletin 2017-08
-[CVE-2017-9691](./CVE-2017-9691/readme.md) | MobiCore driver | Race Condition Info Leak | Android bulletin 2017-08
-[CVE-2017-10997](./CVE-2017-10997/readme.md) | msm pci driver | Buffer Overflow, OOB | Android bulletin 2017-09
-[CVE-2017-8244](./CVE-2017-8244/readme.md) | msm vidc debugfs driver | Buffer Overflow, OOB | Android bulletin 2017-12
+[CVE-2016-0805](./android/CVE-2016-0805/readme.md) &nbsp; &nbsp; &nbsp;  | perf_event_open | Buffer Overflow, OOB | Android bulletin 2016-02
+[CVE-2016-0844](./android/CVE-2016-0844/readme.md) | msm ipa driver | Array Overflow, OOB | Android bulletin 2016-04
+[CVE-2016-3869](./android/CVE-2016-3869/readme.md) | bcmdhd driver | Array Overflow, OOB | Android bulletin 2016-09
+[CVE-2016-3865](./android/CVE-2016-3865/readme.md) | touchscreen driver | Stack Overflow, OOB | Android bulletin 2016-09
+[CVE-2016-3866](./android/cve-2016-3866/readme.md) | msm sound driver | Buffer Overflow, OOB | Android bulletin 2016-09
+[CVE-2016-3867](./android/CVE-2016-3867/readme.md) | msm ipa driver | Race Heap Overflow | Android bulletin 2016-09
+[CVE-2016-3935](./android/cve-2016-3935/readme.md) | msm crypto driver | Integer Overflow | Android bulletin 2016-10
+[CVE-2016-5195](./android/cve-2016-5195/readme.md) |  |  | 
+[CVE-2016-6690](./android/cve-2016-6690/readme.md) | msm sound driver | Arbitrary Address Write | Android bulletin 2016-10
+[CVE-2016-3901](./android/cve-2016-3901/readme.md) | msm crypto driver | Heap Overflow | Android bulletin 2016-10
+[CVE-2016-3940](./android/cve-2016-3940/readme.md) | touchscreen driver | Stack Overflow, OOB | Android bulletin 2016-10
+[CVE-2016-6672](./android/cve-2016-6672/readme.md) | touchscreen driver | Stack Overflow, OOB | Android bulletin 2016-10
+[CVE-2016-6738](./android/CVE-2016-6738/readme.md) | msm crypto driver | Arbitrary Address Write | Android bulletin 2016-11
+[CVE-2016-3906](./android/CVE-2016-3906/readme.md) | msm core driver | Info Leak | Android bulletin 2016-11
+[CVE-2016-6725](./android/CVE-2016-6725/readme.md) | qcom crypto driver | Integer Overflow | Android bulletin 2016-11
+[CVE-2016-6740](./android/CVE-2016-6740/readme.md) | msm camera driver | Stack Overflow | Android bulletin 2016-11
+[CVE-2016-6741](./android/CVE-2016-6741/readme.md) | msm camera driver | Stack Overflow | Android bulletin 2016-11
+[CVE-2016-6742](./android/CVE-2016-6742/readme.md) | touchscreen driver | Heap Overflow | Android bulletin 2016-11
+[CVE-2016-6744](./android/CVE-2016-6744/readme.md) | touchscreen driver | Stack Overflow | Android bulletin 2016-11
+[CVE-2016-6745](./android/CVE-2016-6745/readme.md) | touchscreen driver | Race Heap Overflow | Android bulletin 2016-11
+[CVE-2016-8464](./android/CVE-2016-8464/readme.md) | bcmdhd driver | Heap Overflow, OOB | Android bulletin 2017-01
+[CVE-2017-0434](./android/CVE-2017-0434/readme.md) | Synaptics touchscreen driver | Race Condition UAF | Android bulletin 2017-02
+[CVE-2017-0446](./android/CVE-2017-0446/readme.md) | htc touchscreen driver | Race Condition UAF | Android bulletin 2017-02
+[CVE-2017-0447](./android/CVE-2017-0447/readme.md) | htc touchscreen driver | Race Condition UAF | Android bulletin 2017-02
+[CVE-2017-0432](./android/CVE-2017-0432/readme.md) | mtk driver | Array Overflow, OOB | Android bulletin 2017-02
+[CVE-2017-0524](./android/CVE-2017-0524/readme.md) | htc touchscreen driver | Race Condition UAF | Android bulletin 2017-03
+[CVE-2017-0536](./android/CVE-2017-0536/readme.md) | Synaptics touchscreen driver | Info Leak | Android bulletin 2017-03
+[CVE-2017-0329](./android/CVE-2017-0329/readme.md) | tegra driver | Buffer Overflow, OOB | Android bulletin 2017-04
+[CVE-2017-6426](./android/CVE-2017-6426/readme.md) | Qualcomm SPMI driver | Info Leak | Android bulletin 2017-04
+[CVE-2017-0332](./android/CVE-2017-0332/readme.md) | tegra crypto driver | Buffer Overflow, OOB | Android bulletin 2017-04
+[CVE-2016-10285](.android//CVE-2016-10285/readme.md) | msm mdss driver | Info Leak | Android bulletin 2017-05
+[CVE-2016-10288](.android//CVE-2016-10288/readme.md) | qcom led driver | UAF | Android bulletin 2017-05
+[CVE-2016-10290](.android//CVE-2016-10290/readme.md) | qcom sharedmem driver | Race Condition UAF | Android bulletin 2017-05
+[CVE-2017-0624](./android/CVE-2017-0624/readme.md) | qcom wlan driver | Race Condition UAF | Android bulletin 2017-05
+[CVE-2016-10294](.android//CVE-2016-10294/readme.md) | qcom power management driver | Race Condition infoleak | Android bulletin 2017-05
+[CVE-2016-10295](.android//CVE-2016-10295/readme.md) | qcom led driver | Race Condition infoleak | Android bulletin 2017-05
+[CVE-2016-10296](.android//CVE-2016-10296/readme.md) | qcom sharedmem driver | Race Condition infoleak | Android bulletin 2017-05
+[CVE-2017-8243](./android/CVE-2017-8243/readme.md) | qcom soc driver | Buffer Overflow, OOB | Android bulletin 2017-07
+[CVE-2017-8266](./android/CVE-2017-8266/readme.md) | msm video driver  | Race Condition UAF | Android bulletin 2017-07
+[CVE-2017-8270](./android/CVE-2017-8270/readme.md) | msm wlan driver | Race Condition UAF | Android bulletin 2017-07
+[CVE-2017-0744](./android/CVE-2017-0744/readme.md) | tegra sound driver | Buffer Overflow, OOB | Android bulletin 2017-08
+[CVE-2017-9691](./android/CVE-2017-9691/readme.md) | MobiCore driver | Race Condition Info Leak | Android bulletin 2017-08
+[CVE-2017-10997](.android//CVE-2017-10997/readme.md) | msm pci driver | Buffer Overflow, OOB | Android bulletin 2017-09
+[CVE-2017-8244](./android/CVE-2017-8244/readme.md) | msm vidc debugfs driver | Buffer Overflow, OOB | Android bulletin 2017-12
 [CVE-2017-18153](https://source.android.com/security/overview/acknowledgements?hl=en) | N | OOB | Android bulletin 2018-05
 [CVE-2018-11302](https://source.android.com/security/bulletin/pixel/2019-09-01) | N | OOB | Android bulletin 2019-09
 [cve-2018-5855](https://source.android.com/security/overview/acknowledgements?hl=en) | N | OOB | Android bulletin 2019-04
@@ -153,22 +153,22 @@ CVE Number | Type | Bulletin
 
 CVE Number | Feature | Device 
 ---------- | ------- | ------
-[CVE-2015-5165](./EXP-2015-5165/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | qemu | ubuntu 
-[CVE-2015-7504](./EXP-2015-7504/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | qemu | ubuntu 
-[CVE-2016-3935](./EXP-CVE-2016-3935/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | msm crypto driver | nexus 6p 
-[CVE-2016-0844](./EXP-CVE-2016-0844) | msm ipa driver | nexus 6p 
-[CVE-2016-6038](./EXP-CVE-2016-6738/readme.md) | msm crypto driver | nexus 6p 
-[CVE-2016-2411](./EXP-CVE-2016-2411/readme.md) | Qualcomm Power Management driver | nexus 5x 
-[CVE-2016-2434](./EXP-CVE-2016-2434/readme.md) | NVIDIA video driver |nexus 9
-[CVE-2016-2435](./EXP-CVE-2016-2435/readme.md) | NVIDIA video driver |nexus 9 
-[CVE-2016-3857](./EXP-CVE-2016-3857/readme.md) | linux kernel |nexus 7 
-[CVE-2016-2384](./EXP-CVE-2016-2384) | double-free in USB MIDI driver |linux pc
-[CVE-2016-9793](./EXP-CVE-2016-9793)| signedness issue with SO\_SNDBUFFORCE and SO\_RCVBUFFORCE socket options |linux pc
-[CVE-2017-6074](./EXP-CVE-2017-6074)| double-free in DCCP protocol |linux pc
-[CVE-2017-7308](./EXP-CVE-2017-7308)| signedness issue in AF\_PACKET sockets |linux pc
-[CVE-2017-1000112](./EXP-CVE-2017-1000112)| memory corruption due to UFO to non-UFO path switch |linux pc
-[CVE-2018-17182](./EXP-CVE-2018-17182) | cache invalidation bug in linux|linux pc
-[CVE-2018-18281](./EXP-CVE-2018-18281) | uaf caused by TLB late flush|pixel2
-[CVE-2019-13272](./EXP-CVE-2019-13272) | PTRACE_TRACEME local root on x86-64 | ubuntu 
-[CVE-2019-13272](./EXP-CVE-2019-13272-aarch64) | PTRACE_TRACEME local root on aarch64 | ubuntu 
+[CVE-2015-5165](./android/EXP-2015-5165/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | qemu | ubuntu 
+[CVE-2015-7504](./android/EXP-2015-7504/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | qemu | ubuntu 
+[CVE-2016-3935](./android/EXP-CVE-2016-3935/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | msm crypto driver | nexus 6p 
+[CVE-2016-0844](./android/EXP-CVE-2016-0844) | msm ipa driver | nexus 6p 
+[CVE-2016-6038](./android/EXP-CVE-2016-6738/readme.md) | msm crypto driver | nexus 6p 
+[CVE-2016-2411](./android/EXP-CVE-2016-2411/readme.md) | Qualcomm Power Management driver | nexus 5x 
+[CVE-2016-2434](./android/EXP-CVE-2016-2434/readme.md) | NVIDIA video driver |nexus 9
+[CVE-2016-2435](./android/EXP-CVE-2016-2435/readme.md) | NVIDIA video driver |nexus 9 
+[CVE-2016-3857](./android/EXP-CVE-2016-3857/readme.md) | linux kernel |nexus 7 
+[CVE-2016-2384](./android/EXP-CVE-2016-2384) | double-free in USB MIDI driver |linux pc
+[CVE-2016-9793](./android/EXP-CVE-2016-9793)| signedness issue with SO\_SNDBUFFORCE and SO\_RCVBUFFORCE socket options |linux pc
+[CVE-2017-6074](./android/EXP-CVE-2017-6074)| double-free in DCCP protocol |linux pc
+[CVE-2017-7308](./android/EXP-CVE-2017-7308)| signedness issue in AF\_PACKET sockets |linux pc
+[CVE-2017-1000112](./android/EXP-CVE-2017-1000112)| memory corruption due to UFO to non-UFO path switch |linux pc
+[CVE-2018-17182](./android/EXP-CVE-2018-17182) | cache invalidation bug in linux|linux pc
+[CVE-2018-18281](./android/EXP-CVE-2018-18281) | uaf caused by TLB late flush|pixel2
+[CVE-2019-13272](./android/EXP-CVE-2019-13272) | PTRACE_TRACEME local root on x86-64 | ubuntu 
+[CVE-2019-13272](./android/EXP-CVE-2019-13272-aarch64) | PTRACE_TRACEME local root on aarch64 | ubuntu 
 

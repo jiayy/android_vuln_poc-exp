@@ -1,0 +1,127 @@
+name: Build test
+
+on:
+  # Trigger the workflow on push or pull requests.
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # x86-64 gcc
+          - arch: x86_64
+            cc_pkg: gcc-x86-64-linux-gnu
+            cxx_pkg: g++-x86-64-linux-gnu
+            cc: x86_64-linux-gnu-gcc
+            cxx: x86_64-linux-gnu-g++
+
+          # x86-64 clang
+          - arch: x86_64
+            cc_pkg: clang
+            cxx_pkg: clang
+            cc: clang
+            cxx: clang++
+
+          # x86 (32-bit) gcc
+          - arch: i686
+            cc_pkg: gcc-i686-linux-gnu
+            cxx_pkg: g++-i686-linux-gnu
+            cc: i686-linux-gnu-gcc
+            cxx: i686-linux-gnu-g++
+
+          # aarch64 gcc
+          - arch: aarch64
+            cc_pkg: gcc-aarch64-linux-gnu
+            cxx_pkg: g++-aarch64-linux-gnu
+            cc: aarch64-linux-gnu-gcc
+            cxx: aarch64-linux-gnu-g++
+
+          # arm (32-bit) gcc
+          - arch: arm
+            cc_pkg: gcc-arm-linux-gnueabi
+            cxx_pkg: g++-arm-linux-gnueabi
+            cc: arm-linux-gnueabi-gcc
+            cxx: arm-linux-gnueabi-g++
+
+          # powerpc64
+          - arch: powerpc64
+            cc_pkg: gcc-powerpc64-linux-gnu
+            cxx_pkg: g++-powerpc64-linux-gnu
+            cc: powerpc64-linux-gnu-gcc
+            cxx: powerpc64-linux-gnu-g++
+
+          # powerpc
+          - arch: powerpc
+            cc_pkg: gcc-powerpc-linux-gnu
+            cxx_pkg: g++-powerpc-linux-gnu
+            cc: powerpc-linux-gnu-gcc
+            cxx: powerpc-linux-gnu-g++
+
+          # alpha
+          - arch: alpha
+            cc_pkg: gcc-alpha-linux-gnu
+            cxx_pkg: g++-alpha-linux-gnu
+            cc: alpha-linux-gnu-gcc
+            cxx: alpha-linux-gnu-g++
+
+          # mips64
+          - arch: mips64
+            cc_pkg: gcc-mips64-linux-gnuabi64
+            cxx_pkg: g++-mips64-linux-gnuabi64
+            cc: mips64-linux-gnuabi64-gcc
+            cxx: mips64-linux-gnuabi64-g++
+
+          # mips
+          - arch: mips
+            cc_pkg: gcc-mips-linux-gnu
+            cxx_pkg: g++-mips-linux-gnu
+            cc: mips-linux-gnu-gcc
+            cxx: mips-linux-gnu-g++
+
+    env:
+      FLAGS: -g -O2 -Wall -Wextra -Werror
+
+    steps:
+    - name: Checkout source
+      uses: actions/checkout@v2
+
+    - name: Install Compilers
+      run: |
+        if [[ "${{matrix.cc_pkg}}" == "clang" ]]; then \
+            wget https://apt.llvm.org/llvm.sh -O /tmp/llvm.sh; \
+            sudo bash /tmp/llvm.sh 15; \
+            sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-15 400; \
+            sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-15 400; \
+        else \
+            sudo apt-get update -y; \
+            sudo apt-get install -y ${{matrix.cc_pkg}} ${{matrix.cxx_pkg}}; \
+        fi;
+
+    - name: Display compiler versions
+      run: |
+        ${{matrix.cc}} --version;
+        ${{matrix.cxx}} --version;
+
+    - name: Build
+      run: |
+        ./configure --cc=${{matrix.cc}} --cxx=${{matrix.cxx}};
+        make -j$(nproc) V=1 CPPFLAGS="-Werror" CFLAGS="$FLAGS" CXXFLAGS="$FLAGS";
+
+    - name: Build nolibc
+      run: |
+        if [[ "${{matrix.arch}}" == "x86_64" || "${{matrix.arch}}" == "i686" ]]; then \
+            make clean; \
+            ./configure --cc=${{matrix.cc}} --cxx=${{matrix.cxx}} --nolibc; \
+            make -j$(nproc) V=1 CPPFLAGS="-Werror" CFLAGS="$FLAGS" CXXFLAGS="$FLAGS"; \
+        else \
+            echo "Skipping nolibc build, this arch doesn't support building liburing without libc"; \
+        fi;
+
+    - name: Test install command
+      run: |
+        sudo make install;

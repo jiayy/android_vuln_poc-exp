@@ -1,0 +1,5 @@
+#pragma once
+
+#define USER_FREE_PAYLOAD_RCU_OFFSET (0x4c3a40)
+#define SYS_SETRESUID_OFFSET (0xbe010)
+#define PATCH_JNE_OFFSET (0xc9)
