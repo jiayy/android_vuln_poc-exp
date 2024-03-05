@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright (c) 2016 Tresys Technology, LLC.  All rights reserved. -->
+<QHelpCollectionProject version="1.0">
+    <assistant>
+        <title>Apol Help</title>
+        <startPage>qthelp://com.github.selinuxproject.setools/doc/index.html</startPage>
+        <homePage>qthelp://com.github.selinuxproject.setools/doc/index.html</homePage>
+    </assistant>
+    <docFiles>
+        <generate>
+            <file>
+                <input>apol.qhp</input>
+                <output>apol.qch</output>
+            </file>
+        </generate>
+        <register>
+            <file>apol.qch</file>
+        </register>
+    </docFiles>
+</QHelpCollectionProject>

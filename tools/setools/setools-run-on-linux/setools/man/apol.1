@@ -1,0 +1,43 @@
+.\" Copyright (c) 2016 Tresys Technology, LLC.  All rights reserved.
+.TH apol 1 2016-02-20 "SELinux Project" "SETools: SELinux Policy Analysis Tools"
+
+.SH NAME
+apol \- Graphical SELinux policy analysis tool
+
+.SH SYNOPSIS
+\fBapol\fR [OPTIONS] [POLICY]
+
+.SH DESCRIPTION
+.PP
+\fBapol\fR is a graphical tool that allows the user to inspect and analyze aspects of an SELinux policy.
+
+.SH POLICY
+.PP
+\fBapol\fR supports loading SELinux policies in one of two formats.
+.RS
+.IP "source:"
+A single text file containing a monolithic policy source. This file is usually named policy.conf.
+.IP "binary:"
+A single file containing a binary policy. This file is usually named by version on Linux systems, for example, \fIpolicy.30\fR. This file is usually named \fIsepolicy\fR on Android systems.
+.RE
+.PP
+If not provided, \fBapol\fR will start with none loaded.
+
+.SH OPTIONS
+.IP "-h, --help"
+Print help information and exit.
+.IP "--version"
+Print version information and exit.
+.IP "-v, --verbose"
+Print additional informational messages.
+.IP "--debug"
+Enable debugging output.
+
+.SH AUTHOR
+Chris PeBenito <pebenito@ieee.org>
+
+.SH BUGS
+Please report bugs via the SETools bug tracker, https://github.com/SELinuxProject/setools/issues
+
+.SH SEE ALSO
+sediff(1), sedta(1), seinfo(1), seinfoflow(1), sesearch(1)

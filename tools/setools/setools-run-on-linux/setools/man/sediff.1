@@ -1,0 +1,157 @@
+.\" Copyright (c) 2016 Tresys Technology, LLC.  All rights reserved.
+.TH sediff 1 2016-04-19 "SELinux Project" "SETools: SELinux Policy Analysis Tools"
+
+.SH NAME
+sediff \- SELinux policy difference tool
+
+.SH SYNOPSIS
+\fBsediff\fR [OPTIONS] [EXPRESSION] POLICY1 POLICY2
+
+.SH DESCRIPTION
+Determine the differences between two SELinux policies.
+
+.SH POLICY
+.PP
+\fBsediff\fR supports loading SELinux policies in one of two formats.
+.RS
+.IP "source:"
+A single text file containing a monolithic policy source. This file is usually named policy.conf.
+.IP "binary:"
+A single file containing a binary policy. This file is usually named by version on Linux systems, for example, \fIpolicy.30\fR. This file is usually named \fIsepolicy\fR on Android systems.
+.RE
+.PP
+Policies do not need to be the same format. If not provided, \fBsediff\fR will print an error message and exit.
+
+.SH EXPRESSIONS
+.P
+The user may specify an expression listing the policy elements to differentiate.
+If not provided, all supported policy elements are examined.
+.SS Component Differences
+.IP "--common"
+Find differences in common permission sets.
+.IP "-c, --class"
+Find differences in object classes.
+.IP "-t, --type"
+Find differences in attributes associated with types.
+.IP "-a, --attribute"
+Find differences in types assigned to attributes.
+.IP "-r, --role"
+Find differences in types authorized for roles.
+.IP "-u, --user"
+Find differences in roles authorized for users.
+.IP "-b, --bool"
+Find differences in the default values of booleans.
+.IP "--sensitivity"
+Find differences in sensitivity definitions.
+.IP "--category"
+Find differences in category definitions.
+.IP "--level"
+Find differences in MLS level definitions.
+
+.SS Type Enforcement Rule Differences
+.IP "-A"
+Find differences in allow and allowxperm rules.
+.IP "--allow"
+Find differences in allow rules.
+.IP "--auditallow"
+Find differences in auditallow rules.
+.IP "--dontaudit"
+Find differences in dontaudit rules.
+.IP "--neverallow"
+Find differences in neverallow rules.
+.IP "--allowxperm"
+Find differences in allowxperm rules.
+.IP "--auditallowxperm"
+Find differences in auditallowxperm rules.
+.IP "--dontauditxperm"
+Find differences in dontauditxperm rules.
+.IP "--neverallowxperm"
+Find differences in neverallowxperm rules.
+.IP "-T, --type_trans"
+Find differences in type_transition rules.
+.IP "--type_member"
+Find differences in type_member rules.
+.IP "--type_change"
+Find differences in type_change rules.
+
+.SS RBAC Rule Differences
+.IP "--role_allow"
+Find differences in role allow rules.
+.IP "--role_trans"
+Find differences in role_transition rules.
+
+.SS MLS Rule Differences
+.IP "--range_trans"
+Find differences in range_transition rules.
+
+.SS Constraint Differences
+.IP "--constrain"
+Find differences in constrain rules.
+.IP "--mlsconstrain"
+Find differences in mlsconstrain rules.
+.IP "--validatetrans"
+Find differences in validatetrans rules.
+.IP "--mlsvalidatetrans"
+Find differences in mlsvalidatetrans rules.
+
+.SS Labeling Statement Differences
+.IP "--initialsid"
+Find differences in initial SID statements.
+.IP "--fs_use"
+Find differences in fs_use_* statements.
+.IP "--genfscon"
+Find differences in genfscon statements.
+.IP "--netifcon"
+Find differences in netifcon statements.
+.IP "--nodecon"
+Find differences in nodecon statements.
+.IP "--portcon"
+Find differences in portcon statements.
+
+.SS Other Differences
+.IP "--default"
+Find differences in default_* statements.
+.IP "--property"
+Find differences in policy properties. Only applicable for binary policies (policy version,
+MLS enabled/disabled, unknown permissions setting).
+.IP "--polcap"
+Find differences in policy capabilities.
+.IP "--typebounds"
+Find differences in typebound statements.
+
+.SH OPTIONS
+.IP "-h, --help"
+Print help information and exit.
+.IP "--stats"
+Print difference statistics only.
+.IP "--version"
+Print version information and exit.
+.IP "-v, --verbose"
+Print additional informational messages.
+.IP "--debug"
+Enable debugging output.
+
+.SH DIFFERENCES
+.PP
+.B
+sediff
+categorizes differences in policy elements into one of three forms.
+.RS
+.IP "added"
+The element exists only in the modified policy.
+.IP "removed"
+The element exists only in the original policy.
+.IP "modified"
+The element exists in both policies but its semantic meaning has changed.
+For example, a class is modified if one or more permissions are added or removed.
+.RE
+.PP
+
+.SH AUTHOR
+Chris PeBenito <pebenito@ieee.org>
+
+.SH BUGS
+Please report bugs via the SETools bug tracker, https://github.com/SELinuxProject/setools/issues
+
+.SH SEE ALSO
+apol(1), sedta(1), seinfo(1), seinfoflow(1), sesearch(1)

@@ -1,0 +1,28 @@
+5
+
+invalid infoflow 6
+low_w	w	1
+med_w	w	5
+hi_w	w	10
+low_r	r	1
+med_r	r	5
+hi_r	r	10
+
+class infoflow2 7
+low_w	w	1
+med_w	w	5
+hi_w	w	10
+low_r	r	1
+med_r	r	5
+hi_r	r	10
+super   b	10
+
+class infoflow3 1
+null	n	1
+
+class file 2
+execute r	10
+entrypoint r	10
+
+class process 1
+transition w	10

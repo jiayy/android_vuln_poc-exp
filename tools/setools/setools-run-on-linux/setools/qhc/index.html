@@ -1,0 +1,46 @@
+<!-- Copyright (c) 2016 Tresys Technology, LLC.  All rights reserved. -->
+<title>Apol</title>
+<h1>Apol SELinux Policy Analysis</h1>
+
+<h2>Overview</h2>
+
+<p>This file contains basic help information for using apol, a graphical
+policy analysis tool for Security Enhanced (SELinux) policies.  The
+tool provides the ability to:</p>
+
+<ol>
+<li>
+Examine, search, and relate policy components (types, type
+attributes, object classes, object permissions, roles, users,
+initials SIDs, MLS components, network and file system contexts,
+and booleans), and policy rules.</li>
+
+<li>Perform some automated analysis of policies, including forward and
+reverse domain transition analyses, and information flow analysis.</li>
+</ol>
+
+<p>Apol supports source, and binary policies. Certain apol features may
+be disabled if the underlying policy does not support the action.  For
+example, rule searches will not report line numbers when searching
+monolithic binary polices.
+
+<p>Apol provides compatibility with the current and previous policy
+syntax.  It supports analysis of policy versions 15 and up.</p>
+
+
+<h2>Menus</h2>
+<p>Use <b>Open</b> from the <b>File</b> menu to open a valid policy.
+Only one policy can be open at a time; opening a second policy will
+result in the first being closed.</p>
+
+<p>The <b>Permission Map</b> menu allows for opening, editing,
+and saving <a href="infoflow.html#permmap">permission mappings</a>.
+These are used by apol's <a href="infoflow.html">information flow analysis</a>.</p>
+
+<h2>Starting an Analysis</h2>
+<p>To begin analyzing a policy, click the new analysis button.
+A menu of available analysis tools will be presented.  Select one, and
+a new analysis tab will open.  Any analysis can be started multiple
+times, and each will operate independently, so multiple concurrent
+analyses can be performed.  To help manage multiple tabs, the tabs can be
+renamed by double-click the tab.</p>

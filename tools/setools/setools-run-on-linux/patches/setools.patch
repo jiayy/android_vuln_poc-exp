@@ -1,0 +1,12 @@
+diff --git a/setup.py b/setup.py
+index 2ca44c9..6a9bc17 100644
+--- a/setup.py
++++ b/setup.py
+@@ -156,7 +156,6 @@ ext_py_mods = [Extension('setools.policyrep._qpol',
+                                              '-Wnested-externs',
+                                              '-Wold-style-definition',
+                                              '-Wpointer-arith',
+-                                             '-Wredundant-decls',
+                                              '-Wstrict-prototypes',
+                                              '-Wunknown-pragmas',
+                                              '-Wwrite-strings',

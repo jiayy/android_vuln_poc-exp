@@ -1,0 +1,87 @@
+VERS_4.0{
+	global:
+		apol_attr_*;
+		apol_avrule_*;
+		apol_bool_*;
+		apol_bst_*;
+		apol_cat_*;
+		apol_class_*;
+		apol_common_*;
+		apol_cond_*;
+		apol_config_*;
+		apol_constraint_*;
+		apol_context_*;
+		apol_domain_*;
+		apol_file_*;
+		apol_fs_use_*;
+		apol_genfscon_*;
+		apol_get_*;
+		apol_handle_msg;
+		apol_infoflow_*;
+		apol_ipv4_addr_render;
+		apol_ipv6_addr_render;
+		apol_isid_*;
+		apol_level_*;
+		apol_mls_*;
+		apol_netifcon_*;
+		apol_nodecon_*;
+		apol_objclass_to_str;
+		apol_perm_*;
+		apol_permmap_*;
+		apol_policy_*;
+		apol_policy_path_*;
+		apol_portcon_*;
+		apol_protocol_to_str;
+		apol_qpol_context_render;
+		apol_range_trans_*;
+		apol_filename_trans_*;
+		apol_relabel_*;
+		apol_role_*;
+		apol_role_allow_*;
+		apol_role_trans_*;
+		apol_rule_type_to_str;
+		apol_str_*;
+		apol_syn_*;
+		apol_terule_*;
+		apol_type_*;
+		apol_types_relation_*;
+		apol_user_*;
+		apol_validatetrans_*;
+		apol_vector_*;
+		libapol_get_version;
+	local: *;
+};
+
+VERS_4.1{
+	global:
+		apol_avrule_query_set_all_perms;
+		apol_bst_inorder_map;
+		apol_context_convert;
+		apol_context_create_from_literal;
+		apol_domain_trans_analysis_append_class;
+		apol_domain_trans_analysis_append_perm;
+		apol_mls_level_convert;
+		apol_mls_level_create_from_literal;
+		apol_mls_level_is_literal;
+		apol_mls_level_validate;
+		apol_mls_range_convert;
+		apol_mls_range_create_from_literal;
+		apol_mls_range_create_from_string;
+		apol_mls_range_is_literal;
+		apol_nodecon_query_set_protocol;
+		apol_policy_build_domain_trans_table;
+		apol_policy_get_permmap;
+		apol_policy_open_permmap;
+		apol_policy_reset_domain_trans_table;
+		apol_policy_save_permmap;
+		apol_policy_set_permmap;
+		apol_portcon_query_set_protocol;
+		apol_str_to_protocol;
+		apol_str_to_objclass;
+} VERS_4.0;
+
+VERS_4.2{
+	global:
+		apol_permissive_*;
+		apol_polcap_*;
+} VERS_4.1;

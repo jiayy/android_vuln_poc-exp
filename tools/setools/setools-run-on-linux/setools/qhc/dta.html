@@ -1,0 +1,144 @@
+<!-- Copyright (c) 2016 Tresys Technology, LLC.  All rights reserved. -->
+<title>Domain Transition Analysis</title>
+<h1>Domain Transition Analysis</h1>
+
+
+<p>A key feature of Type Enforcement (TE) security is the ability to
+define domain types with which programs run, use that domain type to
+control access to objects (which are also typed), and strictly control
+the ability of a process to change its domain type.  This last ability
+is known as domain transition.</p>
+
+<p>Apol supports analysis of an SELinux policy to understand the domain
+transitions it allows.  As with all access in SELinux, the ability to
+transition from one domain to another is controlled by 'allow' rules
+in the policy.  Below, we describe how apol performs a domain
+transition analysis.</p>
+
+
+<h2>Types Used in Domain Transitions</h2>
+
+<p>When discussing domain transition access, there are three different
+types we must consider:</p>
+<ul>
+<li>SOURCE TYPE: This is the domain type associated with a process
+that is trying to change (transition) its domain type to another
+type.</li>
+<li>TARGET TYPE: This is the domain type to which the source type is
+trying to transition.</li>
+<li>FILE TYPE (ENTRYPOINT TYPE): This is a type associated with an
+executable file object that allows the target type to be entered
+as part of an exec() system call.</li>
+</ul>
+
+
+<h2>Domain Transition Criteria</h2>
+
+<p>In SELinux, there are two ways for a domain transition to occur,
+on <code>exec()</code>, and on <code>setcon()</code>.
+The common case is for a domain transition to occur on <code>exec()</code>.</p>
+
+
+<h3>Transitions on Exec()</h3>
+<p>In SELinux, four types of access (and hence at four rules)
+must be allowed by the policy for a domain transition to occur.  These
+access types form the criteria used by apol to determine allowed
+transitions.</p>
+
+<p>The criteria for an allowed domain transition are as
+follows.  In the examples below, assume <code>user_t</code> is the source type,
+<code>passwd_t</code> is the target type, and <code>passwd_exec_t</code> is the file entry
+point type.</p>
+
+<ol>
+<li>A rule must exist that allows the SOURCE domain type <code>transition</code>
+access for <code>process</code> object class for the TARGET domain type. For
+example, the rule:<pre>
+
+    allow user_t passwd_t : process transition;
+
+</pre>meets this criterion by allowing the source type (<code>user_t</code>) <code>process:
+transition</code> permission to the target type (<code>passwd_t</code>).</li>
+
+<li>A rule must exist that allows the SOURCE domain type <code>execute</code>
+access to the FILE ENTRYPOINT type. For example, the rule:<pre>
+
+    allow user_t passwd_exec_t : file { read getattr execute };
+
+</pre>meets the criterion by allowing the source type (<code>user_t</code>) <code>execute</code>
+access to the file entrypoint type (<code>passwd_exec_t</code>).</li>
+
+<li>A rule must exist that allows the TARGET domain type <code>entrypoint</code>
+access to the FILE ENTRYPOINT type for file objects.  For
+example, the rule:<pre>
+
+    allow passwd_t passwd_exec_t : file entrypoint;
+
+</pre>meets this criterion by allowing the target type (<code>passwd_t</code>) <code>file:
+entrypoint</code> access to the file entrypoint type (<code>passwd_exec_t</code>).</li>
+
+<li>There must be a way for the transition to be triggered.  Typically
+this is accomplished in the policy with a TYPE TRANSITION statement.
+For example, the statement:<pre>
+
+    type_transition user_t password_exec_t : process passwd_t;
+
+</pre>meets this criterion by specifying that when <code>user_t</code> executes
+a program with the <code>passwd_exec_t</code> type, the default type of the
+new process is <code>passwd_t</code>.  This is the most common specifier because
+it does not require the programs to be SELinux-aware.  Alternatively,
+the program can be made SELinux-aware and the program itself may
+specify the type of the new process.  For example, the statement:<pre>
+
+    allow user_t self : process setexec;
+
+</pre>allows the source type (<code>user_t</code>) to specify the type of new processes
+when executing programs.  In both the type transition and setexec
+cases, the types that the source domain may transition to are
+limited by the previous three criterion.</li>
+</ol>
+
+<p>In the analysis results, apol will list all the types that meet the above four criteria.</p>
+
+
+<h3>Transitions on Setcon()</h3>
+<p>SELinux also supports domain transitions that are requested by SELinux-aware
+programs (also known as a dynamic domain transition),
+using the <code>setcon()</code> libselinux function.  Two types of access
+must be allowed by the policy for a dynamic domain
+transition to occur.  These access types form the criteria used by apol
+to determine allowed transitions.</p>
+
+<p>The criteria for an allowed dynamic domain transition are as
+follows.  In the examples below, assume <code>souce_t</code> is the source type
+and, <code>target_t</code> is the target type.</p>
+
+<ol>
+<li>A rule must exist that allows the SOURCE domain type <code>dyntransition</code>
+access for <code>process</code> object class for the TARGET domain type. For
+example, the rule:<pre>
+
+    allow source_t target_t : process transition;
+
+</pre>meets this criterion by allowing the source type (<code>source_t</code>) <code>process:
+dyntransition</code> permission to the target type (<code>target_t</code>).</li>
+
+<li>A rule must exist that allows the SOURCE domain type <code>setcurrent</code>
+access so it can set its current SELinux context.  For example, the rule:<pre>
+
+    allow source_t source_t : process setcurrent;
+
+</pre>meets the criterion by allowing the source type (<code>source_t</code>) <code>setcurrent</code>
+access on itself.</li>
+</ol>
+
+<p>In the analysis results, apol will list all the types that meet the above two criteria.</p>
+
+
+<h2>Reverse Transitions</h2>
+
+<p>Apol supports both forward and reverse domain transition analysis.  A
+forward analysis determines all the TARGET types to which the selected
+SOURCE types may transition (find child domains/processes).
+A reverse analysis is the opposite; select a TARGET type and determine all the SOURCE
+types that may transition to the target type (find parent domains/processes).</p>

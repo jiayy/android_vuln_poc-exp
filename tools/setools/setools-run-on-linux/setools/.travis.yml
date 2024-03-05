@@ -1,0 +1,75 @@
+# SELinux userspace portions originally by Nicolas Iooss
+# from: https://github.com/fishilico/selinux-refpolicy-patched/blob/travis-upstream/.travis.yml
+---
+
+env:
+  global:
+    # LIBSEPOLA needed by the Makefiles.
+    - USERSPACE_SRC=$TRAVIS_BUILD_DIR/selinux-src
+    - SELINUX_USERSPACE_VERSION=libsepol-2.8
+    - SEPOL_SRC=$USERSPACE_SRC/libsepol
+    - LIBSEPOLA=$SEPOL_SRC/src/libsepol.a
+    - SELINUX_SRC=$USERSPACE_SRC/libselinux
+    - CHECKPOLICY_SRC=$USERSPACE_SRC/checkpolicy
+
+language: python
+
+python:
+  - "3.4"
+  - "3.5"
+  - "3.6"
+
+matrix:
+  fast_finish: true
+  include:
+    - env: TOX_ENV=pep8
+    - env: TOX_ENV=coverage
+    - env: TOX_ENV=lint
+
+  allow_failures:
+    - env: TOX_ENV=coverage
+
+sudo: false
+dist: trusty
+
+addons:
+  apt:
+    packages:
+    # Install SELinux userspace utilities dependencies
+    - bison
+    - flex
+    - gettext
+    - libaudit-dev
+    - libbz2-dev
+    - libustr-dev
+    - libpcre3-dev
+
+before_install:
+  - lsb_release -a
+  - bison -V
+  - flex -V
+  - python -V
+  - pip list
+  - sudo apt-get update -qq
+
+install:
+  # Download current SELinux userspace tools and libraries
+  - git clone https://github.com/SELinuxProject/selinux.git ${USERSPACE_SRC} -b ${SELINUX_USERSPACE_VERSION}
+
+  # Compile SELinux userspace
+  - make -C ${SEPOL_SRC}
+  - make CFLAGS="-O2 -pipe -fPIC -Wall -I${SEPOL_SRC}/include" LDFLAGS="-L${SEPOL_SRC}/src" -C ${SELINUX_SRC}
+  - make CFLAGS="-O2 -pipe -fPIC -Wall -I${SEPOL_SRC}/include" -C ${CHECKPOLICY_SRC}
+
+  - sed -i -e "/Wwrite-strings/s/,/, '-Wno-maybe-uninitialized',/" setup.py
+
+  - pip install tox-travis cython
+
+script:
+  - tox --version
+  - export LD_LIBRARY_PATH="${SEPOL_SRC}/src:${SELINUX_SRC}/src"
+  - |
+      [ -z "$TOX_ENV" ] && tox || tox -e $TOX_ENV
+
+after_failure:
+  - cat "${TRAVIS_BUILD_DIR}/.tox/tox-0.log"

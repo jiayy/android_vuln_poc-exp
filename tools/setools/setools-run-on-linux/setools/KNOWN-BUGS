@@ -1,0 +1,8 @@
+The following is a list of known bugs with SETools.
+
+* A bug in NetworkX 1.8+ will output the following message to stderr if a type
+  is valid, but not a node in a domain transition or information flow graph:
+
+  'Type' object is not iterable
+
+  This message may be seen multiple times at the end of running unit tests.

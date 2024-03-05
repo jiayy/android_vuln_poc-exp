@@ -1,0 +1,14 @@
+include ChangeLog
+include COPYING*
+include man/*
+include qhc/*
+include setools/perm_map
+include setools/policyrep/*.pxd
+include setools/policyrep/*.pxi
+include setools/*.pyx
+include setoolsui/*.ui
+include setoolsui/apol/*.ui
+include setoolsui/apol/apol.qhc
+include tests/*.conf
+include tests/*.py
+include tests/perm_map

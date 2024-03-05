@@ -1,0 +1,118 @@
+.\" Copyright (c) 2016 Tresys Technology, LLC.  All rights reserved.
+.TH seinfo 1 2016-02-20 "SELinux Project" "SETools: SELinux Policy Analysis Tools"
+
+.SH NAME
+seinfo \- SELinux policy information tool
+
+.SH SYNOPSIS
+\fBseinfo\fR [OPTIONS] [EXPRESSION] [POLICY]
+
+.SH DESCRIPTION
+\fBseinfo\fR allows the user to query the components of a SELinux policy.
+
+.SH POLICY
+.PP
+\fBapol\fR supports loading SELinux policies in one of two formats.
+.RS
+.IP "source:"
+A single text file containing a monolithic policy source. This file is usually named policy.conf.
+.IP "binary:"
+A single file containing a binary policy. This file is usually named by version on Linux systems, for example, \fIpolicy.30\fR. This file is usually named \fIsepolicy\fR on Android systems.
+.RE
+.PP
+If no policy file is provided, \fBseinfo\fR will search for the policy running on the current
+system. If no policy can be found, \fBseinfo\fR will print an error message and exit.
+
+.SH EXPRESSIONS
+.P
+One or more of the following component types can be queried.
+If no expressions are provided, policy statistics will be printed.
+.IP "-a [ATTR], --attribute [ATTR]"
+Print a list of type attributes or, if ATTR is provided, print the named attribute.
+With \fI-x\fR, print a list of types assigned to each displayed attribute.
+.IP "-b [BOOL], --bool [BOOL]"
+Print a list of Booleans or, if BOOL is provided, print the named boolean.
+With \fI-x\fR, print the statement of each displayed conditional boolean.
+.IP "-c [CLASS], --class [CLASS]"
+Print a list of object classes or, if CLASS is provided, print the named object class.
+With \fI-x\fR, print a list of permissions for each displayed object class.
+.IP "-r [ROLE], --role [ROLE]"
+Print a list of roles or, if NAME is provided, print the named role.
+With \fI-x\fR, print the statement for each displayed role.
+.IP "-t [TYPE], --type [TYPE]"
+Print a list of types or, if TYPE is provided, print the named type.
+With \fI-x\fR, print a list of attributes which include each displayed type.
+.IP "-u [USER], --user [USER]"
+Print a list of users or, if USER is provided, print the named user.
+With \fI-x\fR, print a list of statement for each displayed user.
+.IP "--category [CAT]"
+Print a list of categories or, if CAT is provided, print the named category.
+With \fI-x\fR, print a list of sensitivities with which each displayed category may be associated.
+.IP "--common [COMMON]"
+Print a list of common permission sets or, if COMMON is provided, print the named common.
+With \fI-x\fR, print a list of permissions in the set.
+.IP "--constrain [CLASS]"
+Print a list of constraints and MLS constraints statements or, if CLASS is provided, print all constraints for the named object class.
+There is no expanded information for this component.
+.IP "--default [CLASS]"
+Print a list of default_* statements or, if CLASS is provided, print all default_* statements for the named object class.
+There is no expanded information for this component.
+.IP "--fs_use [FS_TYPE]"
+Print a list of fs_use_* statements or, if FS_TYPE is provided, print the statement for the named filesystem type.
+There is no expanded information for this component.
+.IP "--genfscon [FS_TYPE]"
+Print a list of genfscon statements or, if FS_TYPE is provided, print the statement for the named filesystem type.
+There is no expanded information for this component.
+.IP "--initialsid [NAME]"
+Print a list of initial SIDs or, if NAME is provided, print the named initial SID.
+With \fI-x\fR, print the context assigned to each displayed SID.
+.IP "--netifcon [DEVICE]"
+Print a list of netif contexts or, if DEVICE is provided, print the named statement for the interface.
+There is no expanded information for this component.
+.IP "--nodecon [ADDR]"
+Print a list of node contexts or, if ADDR is provided, print the named statement for the node with address.
+There is no expanded information for this component.
+.IP "--permissive [TYPE]"
+Print permissive types or, if TYPE is specified, print the named statement if it is permissive.
+There is no expanded information for this component.
+.IP "--polcap [NAME]"
+Print policy capabilities or, if NAME is specified, print the named capability, if enabled.
+With \fI-x\fR, print the statement.
+.IP "--portcon [PORTNUM[-PORTNUM]]"
+Print a list of port contexts or, if PORT or PORT range is provided, print the named statement for the port/port range.
+There is no expanded information for this component.
+.IP "--sensitivity [SENS]"
+Print a list of sensitivities or, if SENS is provided, print the named sensitivity.
+With \fI-x\fR, print the statement for each sensitivity.
+.IP "--typebounds [BOUND_TYPE]"
+Print a list of typebounds statements or, if BOUND_TYPE is provided, print the statement for the named bound type.
+There is no expanded information for this component.
+.IP "--validatetrans [CLASS]"
+Print a list of validatetrans and MLS validatetrans rules or, if CLASS is provided, print all constraints for the named object class.
+There is no expanded information for this component.
+.IP "--all"
+Print all components.
+
+.SH OPTIONS
+.IP "-x, --expand"
+Print additional details for each component matching the expression.
+See the description of each component for the details this option will provide.
+.IP "--flat"
+Exclude headers and indentation in output.
+.IP "-h, --help"
+Print help information and exit.
+.IP "--version"
+Print version information and exit.
+.IP "-v, --verbose"
+Print additional informational messages.
+.IP "--debug"
+Enable debugging output.
+
+.SH AUTHOR
+Chris PeBenito <pebenito@ieee.org>
+
+.SH BUGS
+Please report bugs via the SETools bug tracker, https://github.com/SELinuxProject/setools/issues
+
+.SH SEE ALSO
+apol(1), sediff(1), sedta(1), seinfoflow(1), sesearch(1)

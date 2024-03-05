@@ -1,0 +1,79 @@
+.\" Copyright (c) 2016 Tresys Technology, LLC.  All rights reserved.
+.TH seinfoflow 1 2016-02-20 "SELinux Project" "SETools: SELinux Policy Analysis Tools"
+
+.SH NAME
+seinfoflow \- Information flow analysis for SELinux policies
+
+.SH SYNOPSIS
+\fBseinfoflow\fR [OPTIONS] -m MAP -s SOURCE [-t TARGET (-S|-A LIMIT)] [EXCLUDE [EXCLUDE ...]]
+
+.SH DESCRIPTION
+.PP
+\fBseinfoflow\fR is a command line tool that allows the user to perform information flow analyses
+on an SELinux policy.
+
+.SH POLICY
+.PP
+\fBseinfoflow\fR supports loading SELinux policies in one of two formats.
+.RS
+.IP "source:"
+A single text file containing a monolithic policy source. This file is usually named policy.conf.
+.IP "binary:"
+A single file containing a binary policy. This file is usually named by version on Linux systems, for example, \fIpolicy.30\fR. This file is usually named \fIsepolicy\fR on Android systems.
+.RE
+.PP
+.PP
+If no policy file is provided, \fBseinfoflow\fR will search for the policy running on the current
+system. If no policy can be found, \fBseinfoflow\fR will print an error message and exit.
+
+.SH OPTIONS
+.SS Analysis Settings
+.IP "-p POLICY"
+Specify the policy to analyze. If none is specified, \fBseinfoflow\fR will search for the policy
+running on the current system.
+.IP "-m MAP"
+Specify the path to the permission map file to use in the information flow analysis.
+.IP "-s SOURCE"
+Specify the source type to use in the information flow analysis.
+.IP "-t TARGET"
+Specify the target type to use in the information flow analysis. Using this option will also
+require specifying an analysis algorithm.
+
+.SS Analysis Algorithms
+\fBseinfoflow\fR uses graph algorithms to analyze the information flow paths of an SELinux policy.
+The following algorithms are options for determining paths from a source type to a target type.
+.IP "-S"
+Print the shortest information flow path(s) from the source type to the target type.  If multiple
+paths have the same length, all will be displayed.
+.IP "-A LIMIT"
+Print all information flow path(s) up to LIMIT steps long.  Depending on the connectiveness of
+the policy, a limit of 5 or more may be extremely expensive.
+
+.SS Analysis Options
+.IP "-w MIN_WEIGHT"
+Specify the minimum permission weight to consider for the analysis (1-10). The default is 3.
+.IP "-l LIMIT_FLOWS"
+Specify the maximum number of information flows to output. The default is unlimited.
+.IP EXCLUDE
+A space-separated list of types to exclude from the analysis.
+
+.SS General Options
+.IP "--stats"
+Print information flow graph statistics at the end of the analysis.
+.IP "-h, --help"
+Print help information and exit.
+.IP "--version"
+Print version information and exit.
+.IP "-v, --verbose"
+Print additional informational messages.
+.IP "--debug"
+Enable debugging output.
+
+.SH AUTHOR
+Chris PeBenito <pebenito@ieee.org>
+
+.SH BUGS
+Please report bugs via the SETools bug tracker, https://github.com/SELinuxProject/setools/issues
+
+.SH SEE ALSO
+apol(1), sediff(1), sedta(1), seinfo(1), sesearch(1)

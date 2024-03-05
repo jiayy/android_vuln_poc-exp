@@ -1,0 +1,162 @@
+#!/usr/bin/env python3
+# Copyright 2014-2015, Tresys Technology, LLC
+#
+# This file is part of SETools.
+#
+# SETools is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# SETools is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with SETools.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+import sys
+import argparse
+import logging
+import signal
+
+import setools
+
+
+def print_transition(trans):
+    if trans.transition:
+        print("Domain transition rule(s):")
+        for t in trans.transition:
+            print(t)
+
+        if trans.setexec:
+            print("\nSet execution context rule(s):")
+            for s in trans.setexec:
+                print(s)
+
+        for entrypoint in trans.entrypoints:
+            print("\nEntrypoint {0}:".format(entrypoint.name))
+
+            print("\tDomain entrypoint rule(s):")
+            for e in entrypoint.entrypoint:
+                print("\t{0}".format(e))
+
+            print("\n\tFile execute rule(s):")
+            for e in entrypoint.execute:
+                print("\t{0}".format(e))
+
+            if entrypoint.type_transition:
+                print("\n\tType transition rule(s):")
+                for t in entrypoint.type_transition:
+                    print("\t{0}".format(t))
+
+            print()
+
+    if trans.dyntransition:
+        print("Dynamic transition rule(s):")
+        for d in trans.dyntransition:
+            print(d)
+
+        print("\nSet current process context rule(s):")
+        for s in trans.setcurrent:
+            print(s)
+
+        print()
+
+    print()
+
+
+signal.signal(signal.SIGPIPE, signal.SIG_DFL)
+
+parser = argparse.ArgumentParser(
+    description="SELinux policy domain transition analysis tool.",
+    epilog="If no analysis is selected, all forward transitions out of the source will be printed.")
+parser.add_argument("--version", action="version", version=setools.__version__)
+parser.add_argument("-p", "--policy", help="Path to SELinux policy to analyze.")
+parser.add_argument("-s", "--source", help="Source type of the analysis.", required=True)
+parser.add_argument("-t", "--target", help="Target type of the analysis.")
+parser.add_argument("--stats", action="store_true",
+                    help="Display statistics at the end of the analysis.")
+parser.add_argument("-v", "--verbose", action="store_true",
+                    help="Print extra informational messages")
+parser.add_argument("--debug", action="store_true", dest="debug", help="Enable debugging.")
+
+alg = parser.add_argument_group("Analysis algorithm")
+alg.add_argument("-S", "--shortest_path", action="store_true",
+                 help="Calculate all shortest paths.")
+alg.add_argument("-A", "--all_paths", type=int, metavar="MAX_STEPS",
+                 help="Calculate all paths, with the specified maximum path length. (Expensive)")
+
+opts = parser.add_argument_group("Analysis options")
+opts.add_argument("-r", "--reverse", action="store_true", default=False,
+                  help="Perform a reverse DTA.")
+opts.add_argument("-l", "--limit_trans", default=0, type=int,
+                  help="Limit to the specified number of transitions.  Default is unlimited.")
+opts.add_argument("exclude", help="List of excluded types in the analysis.", nargs="*")
+
+args = parser.parse_args()
+
+if not args.target and (args.shortest_path or args.all_paths):
+    parser.error("The target type must be specified to determine a path.")
+
+if args.target and not (args.shortest_path or args.all_paths):
+    parser.error("An algorithm must be specified to determine a path.")
+
+if args.debug:
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(asctime)s|%(levelname)s|%(name)s|%(message)s')
+elif args.verbose:
+    logging.basicConfig(level=logging.INFO, format='%(message)s')
+else:
+    logging.basicConfig(level=logging.WARNING, format='%(message)s')
+
+try:
+    p = setools.SELinuxPolicy(args.policy)
+    g = setools.DomainTransitionAnalysis(p, reverse=args.reverse, exclude=args.exclude)
+
+    if args.shortest_path or args.all_paths:
+        if args.shortest_path:
+            paths = g.all_shortest_paths(args.source, args.target)
+        else:
+            paths = g.all_paths(args.source, args.target, args.all_paths)
+
+        i = 0
+        for i, path in enumerate(paths, start=1):
+            print("Domain transition path {0}:".format(i))
+
+            for stepnum, step in enumerate(path, start=1):
+
+                print("Step {0}: {1} -> {2}\n".format(stepnum, step.source, step.target))
+                print_transition(step)
+
+            if args.limit_trans and i >= args.limit_trans:
+                break
+
+        print(i, "domain transition path(s) found.")
+
+    else:  # single transition
+        transitions = g.transitions(args.source)
+
+        i = 0
+        for i, step in enumerate(transitions, start=1):
+            print("Transition {0}: {1} -> {2}\n".format(i, step.source, step.target))
+            print_transition(step)
+
+            if args.limit_trans and i >= args.limit_trans:
+                break
+
+        print(i, "domain transition(s) found.")
+
+    if args.stats:
+        print("\nGraph statistics:")
+        print(g.get_stats())
+
+except Exception as err:
+    if args.debug:
+        raise
+    else:
+        print(err)
+
+    sys.exit(1)

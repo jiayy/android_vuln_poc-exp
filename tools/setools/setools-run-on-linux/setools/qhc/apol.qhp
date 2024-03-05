@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2016 Tresys Technology, LLC.  All rights reserved. -->
+<QtHelpProject version="1.0">
+    <namespace>com.github.selinuxproject.setools</namespace>
+    <virtualFolder>doc</virtualFolder>
+    <customFilter name="Apol">
+        <filterAttribute>apol</filterAttribute>
+    </customFilter>
+    <filterSection>
+        <filterAttribute>apol</filterAttribute>
+        <toc>
+            <section title="Apol" ref="index.html">
+                <section title="Analyses" ref="analyses.html">
+                    <section title="Information Flow Analysis" ref="infoflow.html"/>
+                    <section title="Domain Transition Analysis" ref="dta.html"/>
+                </section>
+                <section title="Components" ref="components.html"/>
+                <section title="Rules" ref="rules.html"/>
+                <section title="Labeling" ref="labeling.html"/>
+            </section>
+        </toc>
+        <keywords>
+            <keyword name="DTA" ref="dta.html"/>
+            <keyword name="Domain Transition Analysis" ref="dta.html"/>
+            <keyword name="infoflow" ref="infoflow.html"/>
+            <keyword name="Information Flow" ref="infoflow.html"/>
+            <keyword name="Permission Map" ref="infoflow.html#permmap"/>
+        </keywords>
+        <files>
+            <file>*.html</file>
+        </files>
+    </filterSection>
+</QtHelpProject>

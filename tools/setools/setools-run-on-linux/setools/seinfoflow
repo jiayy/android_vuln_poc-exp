@@ -1,0 +1,153 @@
+#!/usr/bin/env python3
+# Copyright 2014-2015, Tresys Technology, LLC
+#
+# This file is part of SETools.
+#
+# SETools is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# SETools is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with SETools.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+import setools
+import argparse
+import sys
+import logging
+import signal
+
+signal.signal(signal.SIGPIPE, signal.SIG_DFL)
+
+parser = argparse.ArgumentParser(
+    description="SELinux policy information flow analysis tool.",
+    epilog="If no analysis is selected, all information flow out of the source will be printed.")
+parser.add_argument("--version", action="version", version=setools.__version__)
+parser.add_argument("--stats", action="store_true",
+                    help="Display statistics at the end of the analysis.")
+parser.add_argument("-v", "--verbose", action="store_true",
+                    help="Print extra informational messages")
+parser.add_argument("--debug", action="store_true", dest="debug", help="Enable debugging.")
+
+settings = parser.add_argument_group("Analysis settings")
+settings.add_argument("-p", "--policy",
+                      help="Path to SELinux policy to analyze.")
+settings.add_argument("-m", "--map", required=True,
+                      help="Path to permission map file.")
+settings.add_argument("-s", "--source", required=True,
+                      help="Source type of the analysis.")
+settings.add_argument("-t", "--target", default="",
+                      help="Target type of the analysis.")
+
+alg = parser.add_argument_group("Analysis algorithm")
+alg.add_argument("-S", "--shortest_path", action="store_true",
+                 help="Calculate all shortest paths.")
+alg.add_argument("-A", "--all_paths", type=int, metavar="MAX_STEPS",
+                 help="Calculate all paths, with the specified maximum path length. (Expensive)")
+
+opts = parser.add_argument_group("Analysis options")
+opts.add_argument("-w", "--min_weight", default=3, type=int,
+                  help="Minimum permission weight.  Default is 3.")
+opts.add_argument("-l", "--limit_flows", default=0, type=int,
+                  help="Limit to the specified number of flows.  Default is unlimited.")
+opts.add_argument("-b", "--booleans", default=None,
+                  help="Specify the boolean values to use."
+                  " Options are default, or \"foo:true,bar:false...\"")
+opts.add_argument("exclude", nargs="*",
+                  help="List of excluded types in the analysis.")
+
+args = parser.parse_args()
+
+if not args.target and (args.shortest_path or args.all_paths):
+    parser.error("The target type must be specified to determine a path.")
+
+if args.target and not (args.shortest_path or args.all_paths):
+    parser.error("A target type is not used for flows in/out of a type.")
+
+if args.limit_flows < 0:
+    parser.error("Limit on information flows cannot be negative.")
+
+if args.debug:
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(asctime)s|%(levelname)s|%(name)s|%(message)s')
+elif args.verbose:
+    logging.basicConfig(level=logging.INFO, format='%(message)s')
+else:
+    logging.basicConfig(level=logging.WARNING, format='%(message)s')
+
+booleans = None
+if args.booleans == 'default':
+    booleans = {}
+elif args.booleans is not None:
+    booleans = {}
+    for boolean in args.booleans.split(','):
+        try:
+            key, value = boolean.split(':')
+            if value.lower() == 'true':
+                booleans[key] = True
+            elif value.lower() == 'false':
+                booleans[key] = False
+            else:
+                parser.error("Conditional value must be true or false.")
+        except ValueError:
+            parser.error("Expected boolean format foo:true,bar:false")
+
+try:
+    p = setools.SELinuxPolicy(args.policy)
+    m = setools.PermissionMap(args.map)
+    g = setools.InfoFlowAnalysis(p, m, min_weight=args.min_weight, exclude=args.exclude,
+                                 booleans=booleans)
+
+    if args.shortest_path or args.all_paths:
+        if args.shortest_path:
+            paths = g.all_shortest_paths(args.source, args.target)
+        else:
+            paths = g.all_paths(args.source, args.target, args.all_paths)
+
+        flownum = 0
+        for flownum, path in enumerate(paths, start=1):
+            print("Flow {0}:".format(flownum))
+            for stepnum, step in enumerate(path, start=1):
+                print("  Step {0}: {1} -> {2}".format(stepnum, step.source, step.target))
+
+                for rule in sorted(step.rules):
+                    print("   ", rule)
+
+                print()
+
+            if args.limit_flows and flownum >= args.limit_flows:
+                break
+
+            print()
+
+    else:  # single direct info flow
+        flownum = 0
+        for flownum, flow in enumerate(g.infoflows(args.source), start=1):
+            print("Flow {0}: {1} -> {2}".format(flownum, flow.source, flow.target))
+            for rule in sorted(flow.rules):
+                print("   ", rule)
+
+            print()
+
+            if args.limit_flows and flownum >= args.limit_flows:
+                break
+
+    print(flownum, "information flow(s) found.")
+
+    if args.stats:
+        print("\nGraph statistics:")
+        print(g.get_stats())
+
+except Exception as err:
+    if args.debug:
+        raise
+    else:
+        print(err)
+
+    sys.exit(1)

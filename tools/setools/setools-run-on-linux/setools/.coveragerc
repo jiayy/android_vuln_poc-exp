@@ -1,0 +1,11 @@
+#coverage.py configuration
+[run]
+source = setools
+#plugins = Cython.Coverage
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise NotImplementedError
+    return NotImplemented

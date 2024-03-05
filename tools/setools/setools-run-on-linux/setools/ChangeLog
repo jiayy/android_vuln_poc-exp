@@ -1,0 +1,146 @@
+*setools-4.2.1 (4 Feb 2019)
+
+  * Set SIGPIPE handler for CLI tools.
+  * Fixed alias dereferencing in TypeQuery and type, category, and sensitivity
+    lookups.
+  * Fixed sediff bug for rendering modified nodecons.
+  * Fixed devicetreecon count output.
+  * Fixed policy target platform check.
+  * Fixed bug in creating permission set intersection in apol.
+
+
+*setools-4.2.0 (10 Nov 2018)
+
+  This release focused on improving performance and reducing memory usage.
+
+  A Cython-based policy representation replaced the
+  Python/SWIG/static-linked-libsepol implemention. SETools no longer statically
+  links to libsepol, though it is strongly suggested that users rebuild SETools
+  after updating libsepol, in case the policy structure changes.
+
+  Building on the policy representation change, refinements in sediff yielded
+  as much as a 90% reduction in memory use, depending on the policies.
+
+  This release of SETools has different dependencies than previous versions.
+  See README.md for more details.  Support for Python 2.7 was dropped because
+  all current SELinux-supporting distributions provide Python 3.
+
+  Other smaller changes included:
+
+  * Added support for SCTP portcons.
+  * Updated permission maps.
+  * Policy symbol names are now available as the name attribute (e.g.
+    Boolean.name, Type.name, etc.)
+  * Revised some apol layouts to increase the size of text entry fields.
+  * Revised package structure to make policyrep a module of the setools
+    package.
+  * Moved constraint expression to its own class.
+  * Made Conditional.evaluate() more useful and added BaseTERule.enabled()
+    method to determine if a rule is enabled.
+
+  Changes since v4.2.0-rc:
+
+  * Restored missing statement() methods in some policyrep classes
+  * Fixed NULL pointer dereference when iterating over type attributes when
+    the policy has none.
+  * Added xdp_socket permission mapping.
+
+
+*setools-4.2.0-rc (29 Sep 2018)
+
+  Changes since v4.2.0-beta:
+
+  * Fixed performance regressions.
+  * Made further memory usage improvements.
+  * Fixed build issues with clean target and runtime_library_dirs.
+  * Revised package structure to make policyrep a module of the setools
+    package.
+  * Symbol names are now available as the name attribute (e.g.
+    Boolean.name, Type.name, etc.)
+  * Fixed some apol layouts to increase the size of text fields.
+  * Move constraint expression to its own class.
+  * Made Conditional.evaluate() more useful and added BaseTERule.enabled()
+    method to determine if a rule is enabled.
+
+
+*setools-4.2.0-beta (10 Jul 2018)
+
+  Changes since v4.1.1:
+
+  * Replaced the Python/SWIG/static-linked-libsepol policyrep module with
+    a Cython implementation. This will have performance and memory-usage
+    improvements and breaks the static linking to libsepol.
+  * Significant memory usage reduction in sediff (approximately 60%,
+    depending on the policies).
+  * Added support for SCTP portcons.
+  * Updated permission maps.
+  * Support for Python 2.7 was dropped.
+
+  This release of SETools has changed dependencies since 4.1.1. See README.md for more details.
+
+
+*setools-4.1.1 (5 Aug 2017)
+
+  This release has three changes since 4.1.0:
+
+  * Update for libsepol 2.7
+  * Update to permission maps
+  * Fixes for apol help files
+
+
+*setools-4.1.0 (23 Jan 2017)
+
+  This release primarily focused on adding features to apol, but has several
+  library enhancements. There is also one important bugfix in sediff. There
+  were no changes since 4.1.0-rc.
+
+  Note This will not compile on the master branch of libsepol (what will
+  be libsepol 2.7). A future release of SETools will have this support
+  (when libsepol 2.7 is released).
+
+
+*setools-4.1.0-rc (11 Dec 2016)
+
+  Library:
+  * Implemented support for alternate install prefixes.
+  * Implemented support for building setools with a locally-built libsepol.
+  * Fixed an sediff bug with unioning rules after expansion.
+  * Improved sediff memory usage.
+  * Patch from Nicolas Iooss to make more stable output in TE rule permission lists.
+  * Replaced string representations (e.g. rule types) with enumerations.
+    Requires the enum34 (not enum) Python package if using Python < 3.4.
+
+  Apol:
+  * Implemented context menu option for exporting the information flow
+    and domain transition analysis tree browser views.
+  * Implemented CSV export of table results.
+  * Implemented (clipboard) copy from table results.
+  * Added missing "clear" button in object class query.
+  * Implemented save/load settings for tabs.
+  * Implemented save/load workspace (save all tabs settings).
+  * Fixed include/exclude type dialog to keep its place when
+    adding or removing types from an analysis.
+  * Implemented filter on include/exclude type dialog to filter
+    the lists by attribute.
+
+
+*setools-4.0.1 (17 May 2016)
+
+  Library:
+  * Fixed a compile error on 32bit systems.
+  * Changed domain transition analysis output to use lists instead
+    of generators.  This fixes a display problem in apol's DTA browser.
+
+  Apol:
+  * Replaced icons with stock Qt icons to remove license issues
+    with some distributions.
+
+  Sesearch:
+  * Changed xperm options to bring in line with sediff, e.g. --allowx
+    changed to --allowxperm.  Python's argument parser will still detect
+    --allowx as an abbreviation of --allowxperm, so compatibility is preserved.
+
+
+*setools-4.0.0 (04 May 2016)
+
+  First 4.0 release.  SETools is reimplemented in Python.
