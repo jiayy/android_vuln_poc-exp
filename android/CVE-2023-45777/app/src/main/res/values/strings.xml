@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">TheLastBundleMismatch</string>
+    <string name="using_local_class">(Using SemImageClipData class bundled in app, \"Start non-exported Activity\" won\'t work on this device,
+        you can make bug exploitable for testing by using <tt>make-aosp-buggy.sh</tt> script bundled with this app source)</string>
+    <string name="using_system_class">(Using SemImageClipData class from system)</string>
+    <string name="hello_world">
+        \n\nThis is PoC for using <b>PackageParser/PooledStringWriter</b> for making bundle
+        that changes its contents after sending it through binder
+
+        \n\nIn this case issue is not exploitable in AOSP, however bug itself is inside AOSP
+
+        \n\nFirst button is basic test that runs both attacker code and victim code in this process
+
+        \n\nSecond button uses that bundle to bypass check in AccountManagerService that validates
+        that provided Intent opens app having same signature as caller has and then forwards Bundle
+        to other app (which unexpectedly gets another Intent after transfer, in this case pointing
+        to PlatLogoActivity)
+    </string>
+    <string name="in_process_test">In process test</string>
+    <string name="start_non_exported_activity">Start non-exported Activity</string>
+</resources>
