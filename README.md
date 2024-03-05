@@ -1,3 +1,34 @@
+# Exploits 
+
+CVE Number | Feature | Device 
+---------- | ------- | ------
+[CVE-2023-20963](./android/CVE-2023-20963) | WorkSource parcel/unparcel  | android
+[CVE-2023-27703](./android/CVE-2023-27703) | pikpak apk  | android
+[CVE-2023-33768](./android/CVE-2023-33768) | Incorrect signature verification of the firmware  | Belkin Wemo Smart Plug WSP080
+[CVE-2023-35671](./android/CVE-2023-35671) | Android App Pin security issue exposes payment cards in Google Wallet to unauthorized payments  | android
+[CVE-2023-45777](./android/CVE-2023-45777) | bad Parcel  | android
+[CVE-2023-50226](./android/CVE-2023-50226) | Parallels Desktop  | macos
+[CVE-2024-21626](./linux/CVE-2024-21626) | docker runc escape vuln  | docker 
+[CVE-2024-0684](./linux/CVE-2024-0684) | A vulnerability in the GNU coreutils "split" program  | ubuntu 
+[CVE-2015-5165](./android/EXP-2015-5165/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | qemu | ubuntu 
+[CVE-2015-7504](./android/EXP-2015-7504/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | qemu | ubuntu 
+[CVE-2016-3935](./android/EXP-CVE-2016-3935/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | msm crypto driver | nexus 6p 
+[CVE-2016-0844](./android/EXP-CVE-2016-0844) | msm ipa driver | nexus 6p 
+[CVE-2016-6038](./android/EXP-CVE-2016-6738/readme.md) | msm crypto driver | nexus 6p 
+[CVE-2016-2411](./android/EXP-CVE-2016-2411/readme.md) | Qualcomm Power Management driver | nexus 5x 
+[CVE-2016-2434](./android/EXP-CVE-2016-2434/readme.md) | NVIDIA video driver |nexus 9
+[CVE-2016-2435](./android/EXP-CVE-2016-2435/readme.md) | NVIDIA video driver |nexus 9 
+[CVE-2016-3857](./android/EXP-CVE-2016-3857/readme.md) | linux kernel |nexus 7 
+[CVE-2016-2384](./android/EXP-CVE-2016-2384) | double-free in USB MIDI driver |linux pc
+[CVE-2016-9793](./android/EXP-CVE-2016-9793)| signedness issue with SO\_SNDBUFFORCE and SO\_RCVBUFFORCE socket options |linux pc
+[CVE-2017-6074](./android/EXP-CVE-2017-6074)| double-free in DCCP protocol |linux pc
+[CVE-2017-7308](./android/EXP-CVE-2017-7308)| signedness issue in AF\_PACKET sockets |linux pc
+[CVE-2017-1000112](./android/EXP-CVE-2017-1000112)| memory corruption due to UFO to non-UFO path switch |linux pc
+[CVE-2018-17182](./android/EXP-CVE-2018-17182) | cache invalidation bug in linux|linux pc
+[CVE-2018-18281](./android/EXP-CVE-2018-18281) | uaf caused by TLB late flush|pixel2
+[CVE-2019-13272](./android/EXP-CVE-2019-13272) | PTRACE_TRACEME local root on x86-64 | ubuntu 
+[CVE-2019-13272](./android/EXP-CVE-2019-13272-aarch64) | PTRACE_TRACEME local root on aarch64 | ubuntu 
+
 # Vulnerabilities Discovered By Me (mostly)
 
 ## Google
@@ -149,26 +180,4 @@ CVE Number | Type | Bulletin
 [CVE-2015-8226](http://www.huawei.com/cn/psirt/security-advisories/2015/hw-465531) | Dos | huawei advisories 2015-12
 [CVE-2017-0509](http://www.huawei.com/en/psirt/security-advisories/huawei-sa-20161214-02-smartphone-en) | Elevation of privilege | huawei advisories 2016-12
 
-# Exploits 
-
-CVE Number | Feature | Device 
----------- | ------- | ------
-[CVE-2015-5165](./android/EXP-2015-5165/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | qemu | ubuntu 
-[CVE-2015-7504](./android/EXP-2015-7504/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | qemu | ubuntu 
-[CVE-2016-3935](./android/EXP-CVE-2016-3935/readme.md) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  | msm crypto driver | nexus 6p 
-[CVE-2016-0844](./android/EXP-CVE-2016-0844) | msm ipa driver | nexus 6p 
-[CVE-2016-6038](./android/EXP-CVE-2016-6738/readme.md) | msm crypto driver | nexus 6p 
-[CVE-2016-2411](./android/EXP-CVE-2016-2411/readme.md) | Qualcomm Power Management driver | nexus 5x 
-[CVE-2016-2434](./android/EXP-CVE-2016-2434/readme.md) | NVIDIA video driver |nexus 9
-[CVE-2016-2435](./android/EXP-CVE-2016-2435/readme.md) | NVIDIA video driver |nexus 9 
-[CVE-2016-3857](./android/EXP-CVE-2016-3857/readme.md) | linux kernel |nexus 7 
-[CVE-2016-2384](./android/EXP-CVE-2016-2384) | double-free in USB MIDI driver |linux pc
-[CVE-2016-9793](./android/EXP-CVE-2016-9793)| signedness issue with SO\_SNDBUFFORCE and SO\_RCVBUFFORCE socket options |linux pc
-[CVE-2017-6074](./android/EXP-CVE-2017-6074)| double-free in DCCP protocol |linux pc
-[CVE-2017-7308](./android/EXP-CVE-2017-7308)| signedness issue in AF\_PACKET sockets |linux pc
-[CVE-2017-1000112](./android/EXP-CVE-2017-1000112)| memory corruption due to UFO to non-UFO path switch |linux pc
-[CVE-2018-17182](./android/EXP-CVE-2018-17182) | cache invalidation bug in linux|linux pc
-[CVE-2018-18281](./android/EXP-CVE-2018-18281) | uaf caused by TLB late flush|pixel2
-[CVE-2019-13272](./android/EXP-CVE-2019-13272) | PTRACE_TRACEME local root on x86-64 | ubuntu 
-[CVE-2019-13272](./android/EXP-CVE-2019-13272-aarch64) | PTRACE_TRACEME local root on aarch64 | ubuntu 
 
