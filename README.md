@@ -2,6 +2,7 @@
 
 CVE Number | Feature | Device 
 ---------- | ------- | ------
+[CVE-2023-26083](./android/EXP_CVE-2023-26083/README.md) | mali driver  | android
 [CVE-2023-20963](./android/CVE-2023-20963) | WorkSource parcel/unparcel  | android
 [CVE-2023-27703](./android/CVE-2023-27703) | pikpak apk  | android
 [CVE-2023-33768](./android/CVE-2023-33768) | Incorrect signature verification of the firmware  | Belkin Wemo Smart Plug WSP080
